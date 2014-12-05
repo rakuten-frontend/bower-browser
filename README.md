@@ -62,6 +62,7 @@ var app = new BowerBrowser({
 });
 
 // Start the server manually.
+// Unless `open: false` is set, this will automatically open the browser.
 app.start();
 
 // Open the application in your browser.
