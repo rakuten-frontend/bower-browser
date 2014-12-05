@@ -17,9 +17,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
-    "bower-browser": "cli.js"
+    "bower-browser": "lib/cli.js"
   },
   "dependencies": {
     "connect": "^3.3.3",
