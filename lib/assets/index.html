@@ -14,9 +14,9 @@
         <div class="col-md-3">
           <table class="table table-hover">
             <colgroup>
-              <col style="width: 50%;">
+              <col style="width: 40%;">
               <col style="width: 30%;">
-              <col style="width: 20%;">
+              <col style="width: 30%;">
             </colgroup>
             <thead>
               <tr>
@@ -35,7 +35,7 @@
           </table>
         </div>
         <div class="col-md-6">
-          <div class="form-inline">
+          <div class="form-inline functions">
             <button type="button" class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!hasPrev()">Prev</button>
             <button type="button" class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!hasNext()">Next</button>
             <div class="search-field">
@@ -55,10 +55,10 @@
             </colgroup>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Owner</th>
-                <th class="text-right">Stars</th>
-                <th>Updated</th>
+                <th class="th-sortable" ng-class="getSortedClass('name')" ng-click="sortBy('name')">Name</th>
+                <th class="th-sortable" ng-class="getSortedClass('owner')" ng-click="sortBy('owner')">Owner</th>
+                <th class="th-sortable text-right" ng-class="getSortedClass('stars')" ng-click="sortBy('stars')">Stars</th>
+                <th class="th-sortable" ng-class="getSortedClass('updated')" ng-click="sortBy('updated')">Updated</th>
                 <th>Version</th>
                 <th></th>
               </tr>
