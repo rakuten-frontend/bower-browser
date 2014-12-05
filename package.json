@@ -2,8 +2,15 @@
   "name": "bower-browser",
   "version": "0.0.0",
   "description": "GUI tool for managing Bower components.",
-  "author": "Rakuten, Inc.",
-  "license": "MIT",
+  "author": {
+    "name": "Rakuten, Inc."
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/rakuten-frontend/bower-browser/blob/master/LICENSE"
+    }
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
