@@ -1,3 +1,7 @@
+input[type="search"]::-webkit-search-cancel-button {
+-webkit-appearance: searchfield-cancel-button;
+}
+
 .table {
   white-space: nowrap;
 }
@@ -17,4 +21,25 @@
 }
 .log code {
   white-space: pre;
+}
+
+.search-field {
+  display: inline-block;
+  position: relative;
+  margin-left: 8px;
+}
+.search-field .form-control {
+  width: 280px;
+  padding-left: 24px;
+}
+.search-field .icon {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  margin-top: -8px;
+  opacity: 0.7;
+}
+
+.sub-text {
+  margin-left: 8px;
 }

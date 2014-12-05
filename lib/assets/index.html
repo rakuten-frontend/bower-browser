@@ -9,7 +9,7 @@
   <body>
     <div class="container-fluid" ng-controller="LibraryController">
       <h1>bower-browser</h1>
-      <p><b>Project:</b> {{bower.name}} v{{bower.version}}</p>
+      <p><b>Project:</b> {{bower.name}} {{bower.version}}</p>
       <div class="row">
         <div class="col-md-3">
           <table class="table table-hover">
@@ -34,7 +34,16 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
+          <div class="form-inline">
+            <button type="button" class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!hasPrev()">Prev</button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!hasNext()">Next</button>
+            <div class="search-field">
+              <input type="search" class="form-control input-sm" placeholder="Package Name or Keyword" ng-model="query" ng-disabled="!loaded">
+              <span class="icon glyphicon glyphicon-search"></span>
+            </div>
+            <span class="sub-text" ng-show="loaded">{{count}} Results</span>
+          </div>
           <table class="table table-hover">
             <colgroup>
               <col style="width: 26%;">
@@ -82,7 +91,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <pre class="log"><code ng-bind-html="logHtml"></code></pre>
         </div>
       </div>
