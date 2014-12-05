@@ -21,9 +21,8 @@ Manage your Bower components in the web GUI! :-)
   Specify the port number of bower-browser server.
   Default port is 3000.
 
-* `-o <boolean>`, `--open=<boolean>`  
-  Set false to prevent opening your browser at the start.
-  If omit this or set true, browser will open the app automatically.
+* `--skip-open`  
+  Prevent opening your browser at the start.
 
 * `-h`, `--help`  
   Display command usage and exit.
