@@ -5,7 +5,7 @@
 ## Installation
 
 ```shell
-$ npm install -g bower-browser
+$ npm install -g rakuten-frontend/bower-browser
 ```
 
 ## Usage
