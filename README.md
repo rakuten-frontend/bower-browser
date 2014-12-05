@@ -3,11 +3,13 @@
 > GUI tool for managing Bower components.
 
 ## Installation
+
 ```shell
 $ npm install -g bower-browser
 ```
 
 ## Usage
+
 ```shell
 $ cd path/to/your-project
 $ bower-browser
@@ -19,7 +21,7 @@ Manage your Bower components in the web GUI! :-)
 ### CLI Options
 * `-p <number>`, `--port=<number>`  
   Specify the port number of bower-browser server.
-  Default port is 3000.
+  Default port is `3000`.
 
 * `--skip-open`  
   Prevent opening your browser at the start.
@@ -31,17 +33,42 @@ Manage your Bower components in the web GUI! :-)
   Display version and exit.
 
 ## API
+
+### Quick Usage
+Start the bower-browser server with default options.
+
 ```javascript
-var BowerBrowser = require('bower-browser');
+require('bower-browser')();
+```
+
+Or start with options you like.
+
+```javascript
+require('bower-browser')({
+  port: 8080,     // Port number. Default is 3000.
+  open: false     // Prevent opening browser. Default is true (open automatically).
+});
+```
+
+### Advanced Usage
+This module also provides `BowerBrowser` class.
+
+```javascript
+var BowerBrowser = require('bower-browser').BowerBrowser;
 
 var app = new BowerBrowser({
-  port: 8080,     // Port number. Default is 3000.
-  open: false     // Prevent opening browser. Default is true. (Open automatically)
+  port: 8080,
+  open: false
 });
 
-app
-  .start()        // This will start the bower-browser server.
-  .open();        // Open the app in your browser.
+// Start the server manually.
+app.start();
+
+// Open the application in your browser.
+app.open();
+
+// Method chain is supported.
+// app.start().open();
 ```
 
 ## License
