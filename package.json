@@ -48,6 +48,7 @@
     "opn": "^1.0.0",
     "serve-static": "^1.7.1",
     "socket.io": "^1.2.1",
-    "socket.io-client": "^1.2.1"
+    "socket.io-client": "^1.2.1",
+    "win-spawn": "^2.0.0"
   }
 }
