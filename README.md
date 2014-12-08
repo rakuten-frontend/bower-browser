@@ -20,17 +20,16 @@ Manage your Bower components in the web GUI! :-)
 
 ### CLI Options
 * `-p <number>`, `--port=<number>`  
-  Specify the port number of bower-browser server.
-  Default port is `3000`.
+  Port number of bower-browser server. (default: `3000`)
 
 * `--skip-open`  
   Prevent opening your browser at the start.
 
 * `-h`, `--help`  
-  Display command usage and exit.
+  Output usage information.
 
-* `-v`, `--version`  
-  Display version and exit.
+* `-V`, `--version`  
+  Output the version number.
 
 ## API
 
