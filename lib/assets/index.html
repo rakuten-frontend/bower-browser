@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>bower-browser</title>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/node_modules/angular-loading-bar/build/loading-bar.css">
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
@@ -90,6 +91,13 @@
               </tr>
             </tbody>
           </table>
+          <p class="text-center text-muted" ng-show="searching">
+            Loading...
+          </p>
+          <p class="text-center text-danger" ng-show="loadingError">
+            Couldn't fetch packages list from the registry.<br>
+            Please try again later.
+          </p>
         </div>
         <div class="col-md-3">
           <pre class="log"><code>{{log}}</code></pre>
@@ -97,6 +105,7 @@
       </div>
     </div>
     <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-loading-bar/build/loading-bar.js"></script>
     <script src="/node_modules/lodash/dist/lodash.js"></script>
     <script src="/node_modules/moment/moment.js"></script>
     <script src="/node_modules/socket.io-client/socket.io.js"></script>
