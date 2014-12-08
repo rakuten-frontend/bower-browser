@@ -1,0 +1,10 @@
+{
+  "eqeqeq": true,
+  "latedef": true,
+  "noarg": true,
+  "undef": true,
+  "unused": true,
+  "strict": true,
+  "sub": true,
+  "node": true
+}

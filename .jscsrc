@@ -1,0 +1,17 @@
+{
+  "preset": "google",
+  "requireParenthesesAroundIIFE": true,
+  "requireSpacesInFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "disallowSpacesInAnonymousFunctionExpression": null,
+  "maximumLineLength": null,
+  "requireCapitalizedConstructors": true,
+  "requireDotNotation": true,
+  "validateLineBreaks": "LF"
+}
