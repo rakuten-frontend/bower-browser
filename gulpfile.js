@@ -10,4 +10,5 @@ gulp.task('lint', function () {
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('default', ['lint']);
+gulp.task('test', ['lint']);
+gulp.task('default', ['test']);
