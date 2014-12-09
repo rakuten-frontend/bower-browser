@@ -3,17 +3,17 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-var assetsDir = './lib/client/assets/';
+var assetsDir = './lib/client/assets';
 
 gulp.task('lint', function () {
-  return gulp.src(['./*.js', './lib/*.js', assetsDir + 'scripts/**/*.js'])
+  return gulp.src(['./*.js', './lib/*.js', assetsDir + '/scripts/**/*.js'])
     .pipe($.jscs())
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('styles', function () {
-  return $.rubySass(assetsDir + 'styles/', {
+  return $.rubySass(assetsDir + '/styles/', {
       style: 'expanded',
       sourcemap: true
     })
@@ -22,11 +22,11 @@ gulp.task('styles', function () {
     })
     .pipe($.autoprefixer())
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest(assetsDir + 'styles'));
+    .pipe(gulp.dest(assetsDir + '/styles'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch(assetsDir + 'styles/*.scss', ['styles']);
+  gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
 });
 
 gulp.task('test', ['lint']);
