@@ -13,10 +13,20 @@ gulp.task('lint', function () {
 });
 
 gulp.task('styles', function () {
-  return gulp.src(assetsDir + 'styles/*.scss')
-    .pipe($.sass())
+  return $.rubySass(assetsDir + 'styles/', {
+      style: 'expanded',
+      sourcemap: true
+    })
+    .on('error', function (err) {
+      console.error('Error!', err.message);
+    })
     .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest(assetsDir + 'styles'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch(assetsDir + 'styles/*.scss', ['styles']);
 });
 
 gulp.task('test', ['lint']);
