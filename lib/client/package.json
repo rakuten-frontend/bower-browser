@@ -1,0 +1,12 @@
+{
+  "name": "bower-browser-client",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.3.5",
+    "angular-loading-bar": "^0.6.0",
+    "bootstrap": "~3.3.1",
+    "lodash": "^2.4.1",
+    "moment": "^2.8.4",
+    "socket.io-client": "^1.2.1"
+  }
+}
