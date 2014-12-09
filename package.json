@@ -34,6 +34,7 @@
     "bower-browser": "bin/bower-browser"
   },
   "files": [
+    "bin",
     "lib",
     "LICENSE"
   ],
