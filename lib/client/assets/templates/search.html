@@ -1,11 +1,11 @@
 <div class="form-inline functions">
-  <button type="button" class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!hasPrev()">Prev</button>
-  <button type="button" class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!hasNext()">Next</button>
+  <button type="button" class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!service.hasPrev()">Prev</button>
+  <button type="button" class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!service.hasNext()">Next</button>
   <div class="search-field">
-    <input type="search" class="form-control input-sm" placeholder="Package Name or Keyword" ng-model="query" ng-disabled="!loaded">
+    <input type="search" class="form-control input-sm" placeholder="Package Name or Keyword" ng-model="query" ng-disabled="!service.loaded">
     <span class="icon glyphicon glyphicon-search"></span>
   </div>
-  <span class="sub-text" ng-show="loaded">{{count}} Results</span>
+  <span class="sub-text" ng-show="service.loaded">{{service.count}} Results</span>
 </div>
 <table class="table table-hover">
   <colgroup>
@@ -27,7 +27,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="component in results" ng-switch on="isInstalled(component.name)">
+    <tr ng-repeat="component in service.results" ng-switch on="isInstalled(component.name)">
       <th>
         <a class="pointer" title="{{component.description}}" ng-href="{{component.website}}">{{component.name}}</a>
       </th>
@@ -53,10 +53,10 @@
     </tr>
   </tbody>
 </table>
-<p class="text-center text-muted" ng-show="searching">
+<p class="text-center text-muted" ng-show="service.searching">
   Loading...
 </p>
-<p class="text-center text-danger" ng-show="loadingError">
+<p class="text-center text-danger" ng-show="service.loadingError">
   Couldn't fetch packages list from the registry.<br>
   Please try again later.
 </p>
