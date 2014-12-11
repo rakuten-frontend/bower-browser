@@ -1,7 +1,7 @@
 <h1>bower-browser</h1>
 <p><b>Project:</b> {{bower.name}} {{bower.version}}</p>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <table class="table table-hover">
       <colgroup>
         <col style="width: 40%;">
@@ -24,7 +24,7 @@
       </tbody>
     </table>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <div class="form-inline functions">
       <button type="button" class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!hasPrev()">Prev</button>
       <button type="button" class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!hasNext()">Next</button>
@@ -87,8 +87,5 @@
       Couldn't fetch packages list from the registry.<br>
       Please try again later.
     </p>
-  </div>
-  <div class="col-md-3">
-    <pre class="log"><code>{{log}}</code></pre>
   </div>
 </div>

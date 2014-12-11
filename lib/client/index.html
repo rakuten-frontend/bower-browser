@@ -9,15 +9,18 @@
   </head>
   <body>
     <div class="container-fluid" ui-view></div>
+    <div ng-controller="ConsoleController" ng-include="templateUrl"></div>
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/node_modules/angular-loading-bar/build/loading-bar.js"></script>
     <script src="/node_modules/lodash/dist/lodash.js"></script>
     <script src="/node_modules/moment/moment.js"></script>
     <script src="/node_modules/socket.io-client/socket.io.js"></script>
-    <script src="/assets/scripts/ignore.js"></script>
-    <script src="/assets/scripts/whitelist.js"></script>
+    <script src="/assets/scripts/configs/ignore.js"></script>
+    <script src="/assets/scripts/configs/whitelist.js"></script>
     <script src="/assets/scripts/app.js"></script>
-    <script src="/assets/scripts/controllers.js"></script>
+    <script src="/assets/scripts/controllers/home.js"></script>
+    <script src="/assets/scripts/controllers/console.js"></script>
+    <script src="/assets/scripts/services/process.js"></script>
   </body>
 </html>
