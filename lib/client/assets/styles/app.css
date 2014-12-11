@@ -32,7 +32,6 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .functions {
-  margin-top: 15px;
   margin-bottom: 15px;
 }
 
@@ -90,6 +89,10 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .sort-descend:after {
   border-width: 4px 4px 0 4px;
+}
+
+.content {
+  padding-top: 30px;
 }
 
 

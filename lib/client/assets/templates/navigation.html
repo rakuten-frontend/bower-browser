@@ -1,0 +1,6 @@
+<h1>bower-browser</h1>
+<ul class="nav nav-pills nav-stacked">
+  <li ng-repeat="menu in menus" ng-class="{active: $state.includes(menu.id)}">
+    <a ui-sref="{{menu.id}}">{{menu.title}}</a>
+  </li>
+</ul>

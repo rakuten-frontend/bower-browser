@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="/assets/styles/app.css">
   </head>
   <body>
-    <div class="container-fluid" ui-view></div>
-    <div ng-controller="ConsoleController" ng-include="templateUrl"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div ng-controller="NavigationController" ng-include="templateUrl"></div>
+        </div>
+        <div class="col-md-9 content">
+          <div ui-view></div>
+          <div ng-controller="ConsoleController" ng-include="templateUrl"></div>
+        </div>
+      </div>
+    </div>
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/node_modules/angular-loading-bar/build/loading-bar.js"></script>
@@ -22,6 +31,7 @@
     <script src="/assets/scripts/controllers/home.js"></script>
     <script src="/assets/scripts/controllers/search.js"></script>
     <script src="/assets/scripts/controllers/console.js"></script>
+    <script src="/assets/scripts/controllers/navigation.js"></script>
     <script src="/assets/scripts/services/bower.js"></script>
     <script src="/assets/scripts/services/process.js"></script>
     <script src="/assets/scripts/services/search.js"></script>
