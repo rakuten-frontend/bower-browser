@@ -1,62 +1,10 @@
 <div class="form-inline functions">
-  <button type="button" class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!service.hasPrev()">Prev</button>
-  <button type="button" class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!service.hasNext()">Next</button>
+  <a class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!service.hasPrev()">Prev</a>
+  <a class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!service.hasNext()">Next</a>
   <div class="search-field">
     <input type="search" class="form-control input-sm" placeholder="Package Name or Keyword" ng-model="query" ng-disabled="!service.loaded">
     <span class="icon glyphicon glyphicon-search"></span>
   </div>
   <span class="sub-text" ng-show="service.loaded">{{service.count}} Results</span>
 </div>
-<table class="table table-hover">
-  <colgroup>
-    <col style="width: 26%;">
-    <col style="width: 17%;">
-    <col style="width: 10%;">
-    <col style="width: 20%;">
-    <col style="width: 15%;">
-    <col style="width: 12%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th class="th-sortable" ng-class="getSortedClass('name')" ng-click="sortBy('name')">Name</th>
-      <th class="th-sortable" ng-class="getSortedClass('owner')" ng-click="sortBy('owner')">Owner</th>
-      <th class="th-sortable text-right" ng-class="getSortedClass('stars')" ng-click="sortBy('stars')">Stars</th>
-      <th class="th-sortable" ng-class="getSortedClass('updated')" ng-click="sortBy('updated')">Updated</th>
-      <th>Version</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="component in service.results" ng-switch on="isInstalled(component.name)">
-      <th>
-        <a class="pointer" title="{{component.description}}" ng-href="{{component.website}}">{{component.name}}</a>
-      </th>
-      <td>{{component.owner}}</td>
-      <td class="text-right">{{component.stars}}</td>
-      <td>{{timeago(component.updated)}}</td>
-      <td>
-        <div ng-switch-when="false">
-          <input type="text" class="form-control input-xs" placeholder="Latest" ng-model="component.version" ng-init="component.version=''">
-        </div>
-        <div ng-switch-when="true">
-          <input type="text" class="form-control input-xs" placeholder="Latest" disabled ng-value="getVersion(component.name)">
-        </div>
-      </td>
-      <td class="text-right">
-        <div ng-switch-when="false">
-          <button type="button" class="btn btn-default btn-xs" ng-click="install(component.name, component.version)">Install</button>
-        </div>
-        <div ng-switch-when="true">
-          <button type="button" class="btn btn-default btn-xs" ng-click="uninstall(component.name)">Uninstall</button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p class="text-center text-muted" ng-show="service.searching">
-  Loading...
-</p>
-<p class="text-center text-danger" ng-show="service.loadingError">
-  Couldn't fetch packages list from the registry.<br>
-  Please try again later.
-</p>
+<div ui-view></div>
