@@ -42,7 +42,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .search-field .form-control {
-  width: 280px;
+  width: 540px;
   padding-left: 24px;
 }
 
@@ -93,6 +93,11 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .content {
   padding-top: 30px;
+}
+
+.search-results {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 

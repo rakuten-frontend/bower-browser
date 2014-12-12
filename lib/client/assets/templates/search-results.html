@@ -51,3 +51,7 @@
   Couldn't fetch packages list from the registry.<br>
   Please try again later.
 </p>
+<div class="text-center">
+  <a class="btn btn-default btn-sm" ui-sref="search.results({p: {{service.page - 1}}})" ng-disabled="!hasPrev()">Prev</a>
+  <a class="btn btn-default btn-sm" ui-sref="search.results({p: {{service.page + 1}}})" ng-disabled="!hasNext()">Next</a>
+</div>

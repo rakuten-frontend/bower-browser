@@ -1,10 +1,8 @@
 <div class="form-inline functions">
-  <a class="btn btn-default btn-sm" ng-click="goPrev()" ng-disabled="!service.hasPrev()">Prev</a>
-  <a class="btn btn-default btn-sm" ng-click="goNext()" ng-disabled="!service.hasNext()">Next</a>
   <div class="search-field">
     <input type="search" class="form-control input-sm" placeholder="Package Name or Keyword" ng-model="query" ng-disabled="!service.loaded">
     <span class="icon glyphicon glyphicon-search"></span>
   </div>
   <span class="sub-text" ng-show="service.loaded">{{service.count}} Results</span>
 </div>
-<div ui-view></div>
+<div class="search-results" ui-view></div>
