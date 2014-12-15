@@ -1,8 +1,5 @@
-<div class="form-inline functions">
-  <div class="search-field">
-    <input type="search" class="form-control input-sm" placeholder="Package Name or Keyword" ng-model="query" ng-disabled="!service.loaded">
-    <span class="icon glyphicon glyphicon-search"></span>
-  </div>
-  <span class="sub-text" ng-show="service.loaded">{{service.count}} Results</span>
+<div class="search-field">
+  <input type="search" class="form-control" placeholder="Package name or keyword" ng-model="query" ng-disabled="!service.loaded">
+  <span class="icon glyphicon glyphicon-search"></span>
 </div>
 <div class="search-results" ui-view></div>

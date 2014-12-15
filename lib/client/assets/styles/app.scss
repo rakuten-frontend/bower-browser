@@ -1,15 +1,6 @@
+// Extend Bootstrap styles
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button;
-}
-
-.table {
-  table-layout: fixed;
-  white-space: nowrap;
-}
-.table th,
-.table td {
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .input-xs {
@@ -20,38 +11,14 @@ input[type="search"]::-webkit-search-cancel-button {
   line-height: 1.5;
 }
 
-.log {
-  overflow: auto;
-  white-space: pre;
-  word-wrap: normal;
-}
-.log code {
-  white-space: pre;
-}
-
-.functions {
-  margin-bottom: 15px;
-}
-
-.search-field {
-  display: inline-block;
-  position: relative;
-  margin-left: 8px;
-}
-.search-field .form-control {
-  width: 540px;
-  padding-left: 24px;
-}
-.search-field .icon {
-  position: absolute;
-  top: 50%;
-  left: 6px;
-  margin-top: -8px;
-  opacity: 0.7;
-}
-
-.sub-text {
-  margin-left: 8px;
+.table {
+  table-layout: fixed;
+  white-space: nowrap;
+  th,
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 // Layout
@@ -63,6 +30,27 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-bottom: 30px;
 }
 
+// Search functions
+.search-field {
+  position: relative;
+  .form-control {
+    padding-left: 30px;
+  }
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+}
+
+// Results count
+.count {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
 // Sorting dropdown
 .dropdown-check {
   .glyphicon {
@@ -72,5 +60,54 @@ input[type="search"]::-webkit-search-cancel-button {
   }
   .checked .glyphicon {
     opacity: 1;
+  }
+}
+
+// Search results
+.results {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #eee;
+}
+
+.result {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  h3 {
+    margin-top: 0;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  .text-muted {
+    font-size: 13px;
+    color: #999;
+  }
+  .glyphicon-star {
+    margin-top: 1px;
+    margin-right: 0.2em;
+  }
+  .form-control {
+    width: 120px;
+  }
+  .btn {
+    width: 70px;
+  }
+}
+
+.message {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+// Log
+.log {
+  overflow: auto;
+  white-space: pre;
+  word-wrap: normal;
+  code {
+    white-space: pre;
   }
 }
