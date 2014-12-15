@@ -21,7 +21,7 @@
 <div class="results">
   <div class="result" ng-repeat="component in service.results" ng-switch on="isInstalled(component.name)">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-9">
         <h3>
           <a class="pointer" ng-href="{{component.website}}">{{component.name}}</a>
           <small>by {{component.owner}}</small>
@@ -34,14 +34,18 @@
           </ul>
         </div>
       </div>
-      <div class="col-sm-4 text-right">
-        <div class="form-inline" ng-switch-when="false">
-          <input type="text" class="form-control input-sm" placeholder="Latest" ng-model="component.version" ng-init="component.version=''">
-          <button type="button" class="btn btn-default btn-sm" ng-click="install(component.name, component.version)">Install</button>
+      <div class="col-sm-3 text-right">
+        <div class="input-group input-group-sm" ng-switch-when="false">
+          <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=''">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="install(component.name, component.version)">Install</button>
+          </span>
         </div>
-        <div class="form-inline" ng-switch-when="true">
-          <input type="text" class="form-control input-sm" placeholder="Latest" disabled ng-value="getVersion(component.name)">
-          <button type="button" class="btn btn-default btn-sm" ng-click="uninstall(component.name)">Uninstall</button>
+        <div class="input-group input-group-sm" ng-switch-when="true">
+          <input type="text" class="form-control" placeholder="Latest version" disabled ng-value="getVersion(component.name)">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="uninstall(component.name)">Uninstall</button>
+          </span>
         </div>
       </div>
     </div>
