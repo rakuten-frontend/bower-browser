@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-8">
     <div class="count" ng-show="service.loaded">
-      <strong><span ng-hide="service.page === 1">{{service.from}}-{{service.to}} of </span>{{service.count}} results</strong>
+      <strong><span ng-hide="service.page === 1">{{service.from | number}}-{{service.to | number}} of </span>{{service.count | number}} results</strong>
     </div>
   </div>
   <div class="col-xs-4 text-right">
@@ -29,8 +29,8 @@
         <p>{{component.description}}</p>
         <div>
           <ul class="list-inline text-muted">
-            <li><span class="glyphicon glyphicon-star"></span>{{component.stars}}</li>
-            <li>Updated {{timeago(component.updated)}}</li>
+            <li><span class="glyphicon glyphicon-star"></span>{{component.stars | number}}</li>
+            <li>Updated {{component.updated | fromNow}}</li>
           </ul>
         </div>
       </div>
