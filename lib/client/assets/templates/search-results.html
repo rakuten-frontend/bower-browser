@@ -1,3 +1,14 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+    Sort: <strong>{{getSortName()}}</strong>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-check">
+    <li ng-repeat="sort in sorts" ng-class="{checked: getSortName() === sort.name}">
+      <a ui-sref="search.results(sort.params)"><span class="glyphicon glyphicon-ok"></span>{{sort.name}}</a>
+    </li>
+  </ul>
+</div>
 <table class="table table-hover">
   <colgroup>
     <col style="width: 26%;">

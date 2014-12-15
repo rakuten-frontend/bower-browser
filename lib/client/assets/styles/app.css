@@ -100,6 +100,15 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-bottom: 30px;
 }
 
+.dropdown-check .glyphicon {
+  margin-left: -7px;
+  margin-right: 8px;
+  opacity: 0;
+}
+.dropdown-check .checked .glyphicon {
+  opacity: 1;
+}
+
 
 
 /*# sourceMappingURL=app.css.map */

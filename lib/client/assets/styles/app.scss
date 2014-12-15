@@ -91,3 +91,15 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+// Sorting dropdown
+.dropdown-check {
+  .glyphicon {
+    margin-left: -7px;
+    margin-right: 8px;
+    opacity: 0;
+  }
+  .checked .glyphicon {
+    opacity: 1;
+  }
+}
