@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="/assets/styles/app.css">
   </head>
   <body>
-    <div class="container">
+    <div class="container main">
       <div class="row">
         <div class="col-md-3">
           <div ng-controller="NavigationController" ng-include="templateUrl"></div>
         </div>
         <div class="col-md-9 content">
           <div ui-view></div>
-          <div ng-controller="ConsoleController" ng-include="templateUrl"></div>
         </div>
       </div>
     </div>
+    <div ng-controller="ConsoleController" ng-include="templateUrl"></div>
     <script src="/node_modules/jquery/dist/jquery.js"></script>
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
