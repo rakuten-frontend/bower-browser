@@ -1,5 +1,13 @@
-<div class="console" ng-show="shown">
-  <div class="container">
-    <pre class="log"><code>{{process.log}}</code></pre>
+<div class="console" ng-class="{open: shown}">
+  <div class="console-panel">
+    <div class="console-wrapper">
+      <div class="container">
+        <pre class="log"><code>{{process.log}}</code></pre>
+      </div>
+    </div>
+    <a ng-click="hide(true)" class="close">&times;</a>
+  </div>
+  <div class="console-opener">
+    <a class="btn btn-default btn-xs" ng-click="show(true)"><span class="glyphicon glyphicon-chevron-up"></span></a>
   </div>
 </div>

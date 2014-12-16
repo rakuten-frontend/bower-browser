@@ -106,17 +106,63 @@ body {
   text-align: center;
 }
 
-.console {
+.console-panel {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
-  max-height: 200px;
-  overflow: auto;
+  overflow: hidden;
   border-top: 1px solid #ddd;
   background-color: rgba(255, 255, 255, 0.9);
+  -webkit-transform: translate(0, 100%);
+      -ms-transform: translate(0, 100%);
+          transform: translate(0, 100%);
+  -webkit-transition-property: box-shadow, -webkit-transform;
+          transition-property: box-shadow, transform;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+.console.open .console-panel {
   box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.console-panel .close {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+}
+
+.console-wrapper {
+  overflow: auto;
+  max-height: 200px;
+  margin-right: -100px;
+  padding-right: 100px;
+}
+
+.console-opener {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 11;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition-property: -webkit-transform;
+          transition-property: transform;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-delay: 300ms;
+          transition-delay: 300ms;
+}
+.console.open .console-opener {
+  -webkit-transform: translate(0, 50px);
+      -ms-transform: translate(0, 50px);
+          transform: translate(0, 50px);
+  -webkit-transition-delay: 0;
+          transition-delay: 0;
 }
 
 .log {
