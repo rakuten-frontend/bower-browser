@@ -20,6 +20,15 @@ input[type="search"]::-webkit-search-cancel-button {
   text-overflow: ellipsis;
 }
 
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  cursor: default;
+}
+
 .content {
   padding-top: 30px;
 }

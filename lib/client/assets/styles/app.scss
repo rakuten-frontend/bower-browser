@@ -1,4 +1,4 @@
-// Extend Bootstrap styles
+// Override and extend Bootstrap styles
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button;
 }
@@ -18,6 +18,19 @@ input[type="search"]::-webkit-search-cancel-button {
   td {
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+.pagination {
+  > .disabled {
+    > span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+      cursor: default;
+    }
   }
 }
 

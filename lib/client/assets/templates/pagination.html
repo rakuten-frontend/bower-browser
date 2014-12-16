@@ -1,0 +1,29 @@
+<ul class="pagination">
+  <li ng-if="hasPrev()">
+    <a ui-sref="search.results({p: current - 1})">&lsaquo; <small>Previous</small></a>
+  </li>
+  <li class="disabled" ng-if="!hasPrev()">
+    <span>&lsaquo; <small>Previous</small></span>
+  </li>
+  <li ng-if="hasStart()">
+    <a ui-sref="search.results({p: min})">{{min | number}}</a>
+  </li>
+  <li class="disabled" ng-if="hasStartPadding()">
+    <span>&hellip;</span>
+  </li>
+  <li ng-repeat="i in _.range(repeatStart, repeatStart + repeat)" ng-class="{active: i === current}">
+    <a ui-sref="search.results({p: i})">{{i | number}}</a>
+  </li>
+  <li class="disabled" ng-if="hasEndPadding()">
+    <span>&hellip;</span>
+  </li>
+  <li ng-if="hasEnd()">
+    <a ui-sref="search.results({p: max})">{{max | number}}</a>
+  </li>
+  <li ng-if="hasNext()">
+    <a ui-sref="search.results({p: current + 1})"><small>Next</small> &rsaquo;</a>
+  </li>
+  <li class="disabled" ng-if="!hasNext()">
+    <span><small>Next</small> &rsaquo;</span>
+  </li>
+</ul>

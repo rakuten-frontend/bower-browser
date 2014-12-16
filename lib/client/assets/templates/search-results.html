@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-8">
-    <div class="count" ng-show="service.loaded">
+    <div class="count" ng-if="service.loaded">
       <strong><span ng-hide="service.page === 1">{{service.from | number}}-{{service.to | number}} of </span>{{service.count | number}} results</strong>
     </div>
   </div>
@@ -50,15 +50,14 @@
       </div>
     </div>
   </div>
-  <p class="text-muted message" ng-show="service.searching">
+  <p class="text-muted message" ng-if="service.searching">
     Loading...
   </p>
-  <p class="text-danger message" ng-show="service.loadingError">
+  <p class="text-danger message" ng-if="service.loadingError">
     Couldn't fetch packages list from the registry.<br>
     Please try again later.
   </p>
 </div>
-<div class="text-center" ng-show="hasPrev() || hasNext()">
-  <a class="btn btn-default btn-sm" ui-sref="search.results({p: {{service.page - 1}}})" ng-disabled="!hasPrev()">Prev</a>
-  <a class="btn btn-default btn-sm" ui-sref="search.results({p: {{service.page + 1}}})" ng-disabled="!hasNext()">Next</a>
+<div class="text-center" ng-if="service.loaded">
+  <app-pagination max="service.pageCount" current="service.page" offset="2"></app-pagination>
 </div>
