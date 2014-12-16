@@ -18,11 +18,12 @@
         </div>
       </div>
     </div>
-    <div ng-controller="ConsoleController" ng-include="templateUrl"></div>
+    <div ng-controller="ConsoleController" ng-include="templateUrl" onload="onload()"></div>
     <script src="/node_modules/jquery/dist/jquery.js"></script>
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/node_modules/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/node_modules/angular-scroll/angular-scroll.js"></script>
     <script src="/node_modules/lodash/dist/lodash.js"></script>
     <script src="/node_modules/moment/moment.js"></script>
     <script src="/node_modules/socket.io-client/socket.io.js"></script>
