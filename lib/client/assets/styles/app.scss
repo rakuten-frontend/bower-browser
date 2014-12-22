@@ -136,13 +136,13 @@ body {
   }
   .close {
     position: absolute;
-    top: 7px;
+    top: 8px;
     right: 15px;
   }
 }
 .console-wrapper {
   overflow: auto;
-  max-height: 200px;
+  height: 200px;
   margin-right: -100px;
   padding-right: 100px;
 }
