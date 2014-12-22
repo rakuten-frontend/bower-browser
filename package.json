@@ -28,7 +28,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "postinstall": "npm install --prefix lib/client",
+    "postinstall": "cd lib/client && npm install",
     "test": "gulp test"
   },
   "main": "index.js",
