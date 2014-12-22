@@ -1,11 +1,11 @@
 # bower-browser [![NPM Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url]
 
-> GUI tool for managing Bower components.
+> Browser-based GUI for managing Bower components.
 
 ## Installation
 
 ```shell
-$ npm install -g rakuten-frontend/bower-browser
+$ npm install -g bower-browser
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ $ cd path/to/your-project
 $ bower-browser
 ```
 
-Then, browser will open <http://localhost:3000> automatically.  
+Then, web browser will open `http://localhost:3000` automatically.  
 Manage your Bower components in the web GUI! :-)
 
 ### CLI Options
@@ -34,7 +34,7 @@ Manage your Bower components in the web GUI! :-)
 ## API
 
 ### Quick Usage
-Start the bower-browser server with default options.
+Start the `bower-browser` app with default options.
 
 ```javascript
 require('bower-browser')();
@@ -68,7 +68,7 @@ app.start();
 app.open();
 
 // Method chain is supported.
-// app.start().open();
+app.start().open();
 ```
 
 ## License

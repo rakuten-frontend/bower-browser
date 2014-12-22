@@ -1,7 +1,7 @@
 {
   "name": "bower-browser",
   "version": "0.0.0",
-  "description": "GUI tool for managing Bower components",
+  "description": "Browser-based GUI for managing Bower components",
   "author": {
     "name": "Rakuten, Inc."
   },
@@ -21,7 +21,8 @@
   },
   "keywords": [
     "bower",
-    "gui"
+    "gui",
+    "server"
   ],
   "engines": {
     "node": ">=0.10.0"
@@ -35,6 +36,7 @@
     "bower-browser": "bin/bower-browser"
   },
   "files": [
+    "index.js",
     "bin",
     "lib",
     "LICENSE"
