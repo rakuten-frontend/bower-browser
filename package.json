@@ -43,6 +43,7 @@
     "commander": "^2.5.0",
     "connect": "^3.3.3",
     "gaze": "^0.6.4",
+    "multipipe": "^0.1.2",
     "opn": "^1.0.0",
     "serve-static": "^1.7.1",
     "socket.io": "^1.2.1",
