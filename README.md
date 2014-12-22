@@ -1,4 +1,4 @@
-# bower-browser (WIP)
+# bower-browser [![NPM Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url]
 
 > GUI tool for managing Bower components.
 
@@ -73,3 +73,10 @@ app.open();
 
 ## License
 Copyright (c) 2014 Rakuten, Inc. Licensed under the [MIT License](LICENSE).
+
+[npm-image]: https://img.shields.io/npm/v/bower-browser.svg?style=flat
+[npm-url]: https://www.npmjs.org/package/bower-browser
+[travis-image]: https://img.shields.io/travis/rakuten-frontend/bower-browser/master.svg?style=flat
+[travis-url]: https://travis-ci.org/rakuten-frontend/bower-browser
+[deps-image]: http://img.shields.io/david/rakuten-frontend/bower-browser.svg?style=flat
+[deps-url]: https://david-dm.org/rakuten-frontend/bower-browser
