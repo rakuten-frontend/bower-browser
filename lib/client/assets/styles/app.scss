@@ -40,12 +40,25 @@ body {
   height: 100%;
 }
 
+.navigation,
 .content {
   padding-top: 30px;
 }
 .search-results {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+// Navigation
+.app-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+// Home
+.project-title {
+  margin-top: 0;
 }
 
 // Search functions

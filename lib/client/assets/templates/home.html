@@ -1,4 +1,5 @@
-<p><b>Project:</b> {{bower.json.name}} {{bower.json.version}}</p>
+<h1 class="project-title">{{bower.json.name}} {{bower.json.version}}</h1>
+<h2>Dependencies</h2>
 <table class="table table-hover">
   <colgroup>
     <col style="width: 40%;">
@@ -16,7 +17,11 @@
     <tr ng-repeat="(name, version) in bower.json.dependencies">
       <th>{{name}}</th>
       <td>{{version}}</td>
-      <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="uninstall(name)">Uninstall</button></td>
+      <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name)">Uninstall</button></td>
     </tr>
   </tbody>
 </table>
+<div>
+  <a class="btn btn-default" ng-click="bower.install()">Install dependencies</a>
+  <a class="btn btn-default" ng-click="bower.update()">Update all</a>
+</div>
