@@ -6,7 +6,7 @@
   </div>
   <div class="col-xs-4 text-right">
     <div class="dropdown">
-      <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+      <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" ng-class="{disabled: !service.loaded}">
         Sort: <strong>{{getSortName()}}</strong>
         <span class="caret"></span>
       </button>
