@@ -17,11 +17,11 @@
     <tr ng-repeat="(name, version) in bower.json.dependencies">
       <th>{{name}}</th>
       <td>{{version}}</td>
-      <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name)">Uninstall</button></td>
+      <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name)" ng-disabled="process.isInQueue('uninstall-' + name)">Uninstall</button></td>
     </tr>
   </tbody>
 </table>
 <div>
-  <a class="btn btn-default" ng-click="bower.install()">Install dependencies</a>
-  <a class="btn btn-default" ng-click="bower.update()">Update all</a>
+  <a class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')">Install dependencies</a>
+  <a class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')">Update all</a>
 </div>

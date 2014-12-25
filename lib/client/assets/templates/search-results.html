@@ -38,13 +38,13 @@
         <div class="input-group input-group-sm" ng-switch-when="false">
           <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=''">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="bower.install(component.name, component.version)">Install</button>
+            <button type="button" class="btn btn-default" ng-click="bower.install(component.name, component.version)" ng-disabled="process.isInQueue('install-' + component.name)">Install</button>
           </span>
         </div>
         <div class="input-group input-group-sm" ng-switch-when="true">
           <input type="text" class="form-control" placeholder="Latest version" disabled ng-value="bower.getVersion(component.name)">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="bower.uninstall(component.name)">Uninstall</button>
+            <button type="button" class="btn btn-default" ng-click="bower.uninstall(component.name)" ng-disabled="process.isInQueue('uninstall-' + component.name)">Uninstall</button>
           </span>
         </div>
       </div>
