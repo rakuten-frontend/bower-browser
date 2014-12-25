@@ -8,7 +8,7 @@ var pkg = require('../package.json');
 program
   .version(pkg.version)
   .usage('[options]')
-  .option('-p, --port <number>', 'port number of bower-browser server (default: 3000)', parseInt)
+  .option('--port <number>', 'port number of bower-browser server (default: 3000)', parseInt)
   .option('--skip-open', 'prevent opening your browser at the start')
   .parse(process.argv);
 

@@ -19,7 +19,7 @@ Then, web browser will open `http://localhost:3000` automatically.
 Manage your Bower components in the web GUI! :-)
 
 ### CLI Options
-* `-p <number>`, `--port=<number>`  
+* `--port <number>`  
   Port number of bower-browser server. (default: `3000`)
 
 * `--skip-open`  
