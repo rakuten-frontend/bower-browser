@@ -33,42 +33,17 @@ Manage your Bower components in the web GUI! :-)
 
 ## API
 
-### Quick Usage
-Start the `bower-browser` app with default options.
-
 ```javascript
-require('bower-browser')();
-```
+var bowerBrowser = require('bower-browser');
 
-Or start with options you like.
+// Start the application with default config.
+bowerBrowser();
 
-```javascript
-require('bower-browser')({
+// Or start with options you like.
+bowerBrowser({
   port: 8080,     // Port number. Default is 3000.
   open: false     // Prevent opening browser. Default is true (open automatically).
 });
-```
-
-### Advanced Usage
-This module also provides `BowerBrowser` class.
-
-```javascript
-var BowerBrowser = require('bower-browser').BowerBrowser;
-
-var app = new BowerBrowser({
-  port: 8080,
-  open: false
-});
-
-// Start the server programmatically.
-// Unless `open: false` is set, this will automatically open the browser.
-app.start();
-
-// Open the application in your browser.
-app.open();
-
-// Method chain is supported.
-app.start().open();
 ```
 
 ## License
