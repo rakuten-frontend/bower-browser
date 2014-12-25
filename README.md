@@ -19,6 +19,9 @@ Then, web browser will open `http://localhost:3000` automatically.
 Manage your Bower components in the web GUI! :-)
 
 ### CLI Options
+* `--path <directory>`  
+  Location of bower.json. (default: cwd)
+
 * `--port <number>`  
   Port number of bower-browser server. (default: `3000`)
 
@@ -41,8 +44,9 @@ bowerBrowser();
 
 // Or start with options you like.
 bowerBrowser({
-  port: 8080,     // Port number. Default is 3000.
-  open: false     // Prevent opening browser. Default is true (open automatically).
+  path: 'path/to/project',  // Location of bower.json. Default is null (cwd).
+  port: 8080,               // Port number. Default is 3000.
+  open: false               // Prevent opening browser. Default is true (open automatically).
 });
 ```
 

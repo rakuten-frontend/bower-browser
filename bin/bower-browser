@@ -8,6 +8,7 @@ var pkg = require('../package.json');
 program
   .version(pkg.version)
   .usage('[options]')
+  .option('--path <directory>', 'location of bower.json (default: cwd)')
   .option('--port <number>', 'port number of bower-browser server (default: 3000)', parseInt)
   .option('--skip-open', 'prevent opening your browser at the start')
   .parse(process.argv);
