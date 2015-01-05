@@ -51,7 +51,7 @@ bowerBrowser({
 ```
 
 ## License
-Copyright (c) 2014 Rakuten, Inc. Licensed under the [MIT License](LICENSE).
+Copyright (c) 2014-2015 Rakuten, Inc. Licensed under the [MIT License](LICENSE).
 
 [npm-image]: https://img.shields.io/npm/v/bower-browser.svg?style=flat
 [npm-url]: https://www.npmjs.org/package/bower-browser
