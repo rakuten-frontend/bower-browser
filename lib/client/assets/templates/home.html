@@ -33,6 +33,6 @@
   </div>
 </div>
 <div class="message" ng-if="bower.error">
-  <p class="text-danger">{{bower.message}}</p>
+  <p class="text-danger"><strong>Failed to load bower.json</strong><br>{{bower.message}}</p>
   <a class="btn btn-default" ng-click="bower.reload()">Reload</a>
 </div>

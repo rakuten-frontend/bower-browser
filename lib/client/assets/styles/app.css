@@ -117,6 +117,9 @@ body {
   margin-bottom: 50px;
   text-align: center;
 }
+.message p {
+  margin-bottom: 25px;
+}
 
 .console-panel {
   position: fixed;
