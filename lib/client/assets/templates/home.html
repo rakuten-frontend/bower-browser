@@ -28,8 +28,8 @@
     </tbody>
   </table>
   <div>
-    <a class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')">Install dependencies</a>
-    <a class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')">Update all</a>
+    <button type="button" class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')">Install dependencies</button>
+    <button type="button" class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')">Update all</button>
   </div>
 </div>
 <div class="message" ng-if="bower.error">
