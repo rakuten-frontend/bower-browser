@@ -1,7 +1,7 @@
 <h1 class="project-title">{{bower.json.name || bower.name}} <small>{{bower.json.version}}</small></h1>
 <ul class="list-inline">
   <li>{{bower.path}}</li>
-  <li><a href title="Reload bower.json" ng-click="bower.refresh()"><span class="glyphicon glyphicon-refresh"></span></a></li>
+  <li><a href title="Reload bower.json" ng-click="bower.reload()"><span class="glyphicon glyphicon-refresh"></span></a></li>
 </ul>
 <hr>
 <div ng-if="!bower.error">
@@ -34,5 +34,5 @@
 </div>
 <div class="message" ng-if="bower.error">
   <p class="text-danger">{{bower.message}}</p>
-  <a class="btn btn-default" ng-click="bower.refresh()">Reload</a>
+  <a class="btn btn-default" ng-click="bower.reload()">Reload</a>
 </div>
