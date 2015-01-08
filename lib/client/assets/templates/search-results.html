@@ -38,13 +38,19 @@
         <div class="input-group input-group-sm" ng-switch-when="false">
           <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=''">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="bower.install(component.name, component.version)" ng-disabled="process.isInQueue('install-' + component.name)">Install</button>
+            <button type="button" class="btn btn-default" ng-click="bower.install(component.name, {version: component.version, options: '--save'})" ng-disabled="process.isInQueue('install-' + component.name)">Install</button>
           </span>
         </div>
-        <div class="input-group input-group-sm" ng-switch-when="true">
-          <input type="text" class="form-control" placeholder="Latest version" disabled ng-value="bower.getVersion(component.name)">
+        <div class="input-group input-group-sm" ng-switch-when="dependencies">
+          <input type="text" class="form-control" disabled ng-value="bower.getVersion(component.name)">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="bower.uninstall(component.name)" ng-disabled="process.isInQueue('uninstall-' + component.name)">Uninstall</button>
+            <button type="button" class="btn btn-default" ng-click="bower.uninstall(component.name, {options: '--save'})" ng-disabled="process.isInQueue('uninstall-' + component.name)">Uninstall</button>
+          </span>
+        </div>
+        <div class="input-group input-group-sm" ng-switch-when="devDependencies">
+          <input type="text" class="form-control" disabled ng-value="bower.getVersion(component.name, 'devDependencies')">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="bower.uninstall(component.name, {options: '--save-dev'})" ng-disabled="process.isInQueue('uninstall-' + component.name)">Uninstall</button>
           </span>
         </div>
       </div>
