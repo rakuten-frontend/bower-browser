@@ -1,5 +1,5 @@
 <h1 class="project-title">{{bower.json.name || bower.name}} <small>{{bower.json.version}}</small></h1>
-<div>{{bower.path}} <a class="btn btn-link btn-xs reload" title="Reload bower.json" ng-click="bower.reload()"><span class="glyphicon glyphicon-refresh"></span></a></div>
+<div>{{bower.path}} <a class="btn btn-link btn-xs reload" title="Reload bower.json" ng-click="bower.reload()"><span class="glyphicon glyphicon-repeat"></span></a></div>
 <hr>
 <div ng-if="!bower.error">
   <div ng-if="bower.json.dependencies">
@@ -50,12 +50,12 @@
       </tbody>
     </table>
   </div>
-  <div>
-    <button type="button" class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')">Install to project folder</button>
-    <button type="button" class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')">Update all</button>
+  <div class="home-action">
+    <button type="button" class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')"><span class="glyphicon glyphicon-save"></span> Install to project folder</button>
+    <button type="button" class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')"><span class="glyphicon glyphicon-refresh"></span> Update all</button>
   </div>
 </div>
 <div class="message" ng-if="bower.error">
   <p class="text-danger"><strong>Failed to load bower.json</strong><br>{{bower.message}}</p>
-  <a class="btn btn-default" ng-click="bower.reload()">Reload</a>
+  <a class="btn btn-default reload" ng-click="bower.reload()"><span class="glyphicon glyphicon-repeat"></span> Reload</a>
 </div>

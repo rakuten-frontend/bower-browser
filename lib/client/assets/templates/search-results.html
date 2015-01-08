@@ -21,7 +21,7 @@
 <div class="results">
   <div class="result" ng-repeat="component in service.results" ng-switch on="bower.isInstalled(component.name)">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-lg-9 col-sm-8">
         <h3>
           <a class="pointer" ng-href="{{component.website}}">{{component.name}}</a>
           <small>by <a href="https://github.com/{{component.owner}}">{{component.owner}}</a></small>
@@ -34,11 +34,11 @@
           </ul>
         </div>
       </div>
-      <div class="col-sm-3 text-right">
+      <div class="col-lg-3 col-sm-4 text-right">
         <div class="input-group input-group-sm action" ng-switch-when="false">
           <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=''">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default btn-multiple" ng-click="bower.install(component.name, {version: component.version, options: '--save'})" ng-disabled="process.isInQueue('install-' + component.name)">Install</button>
+            <button type="button" class="btn btn-default btn-multiple" ng-click="bower.install(component.name, {version: component.version, options: '--save'})" ng-disabled="process.isInQueue('install-' + component.name)"><span class="glyphicon glyphicon-save"></span> Install</button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-disabled="process.isInQueue('install-' + component.name)"><span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href ng-click="bower.install(component.name, {version: component.version, options: '--save'})">Install as dependency</a></li>
@@ -50,13 +50,13 @@
         <div class="input-group input-group-sm action" ng-switch-when="dependencies">
           <input type="text" class="form-control" disabled ng-value="bower.getVersion(component.name)">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default btn-single" ng-click="bower.uninstall(component.name, {options: '--save'})" ng-disabled="process.isInQueue('uninstall-' + component.name)">Uninstall</button>
+            <button type="button" class="btn btn-default btn-single" ng-click="bower.uninstall(component.name, {options: '--save'})" ng-disabled="process.isInQueue('uninstall-' + component.name)"><span class="glyphicon glyphicon-trash"></span> Uninstall</button>
           </div>
         </div>
         <div class="input-group input-group-sm action" ng-switch-when="devDependencies">
           <input type="text" class="form-control" disabled ng-value="bower.getVersion(component.name, 'devDependencies')">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default btn-single" ng-click="bower.uninstall(component.name, {options: '--save-dev'})" ng-disabled="process.isInQueue('uninstall-' + component.name)">Uninstall</button>
+            <button type="button" class="btn btn-default btn-single" ng-click="bower.uninstall(component.name, {options: '--save-dev'})" ng-disabled="process.isInQueue('uninstall-' + component.name)"><span class="glyphicon glyphicon-trash"></span> Uninstall</button>
           </div>
         </div>
       </div>

@@ -67,6 +67,11 @@ body {
           transition-duration: 0;
 }
 
+.home-action {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .search-field {
   position: relative;
 }
@@ -120,14 +125,19 @@ body {
   margin-top: 1px;
   margin-right: 0.2em;
 }
+.result .action .btn-single,
+.result .action .btn-multiple {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .result .action .btn-single {
-  min-width: 80px;
+  min-width: 85px;
 }
 .result .action .btn-multiple {
-  min-width: 60px;
+  min-width: 68px;
 }
 .result .action .dropdown-toggle {
-  width: 20px;
+  width: 18px;
   padding-left: 0;
   padding-right: 0;
 }
