@@ -120,8 +120,16 @@ body {
   margin-top: 1px;
   margin-right: 0.2em;
 }
-.result .btn {
-  min-width: 70px;
+.result .action .btn-single {
+  min-width: 80px;
+}
+.result .action .btn-multiple {
+  min-width: 60px;
+}
+.result .action .dropdown-toggle {
+  width: 20px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .message {

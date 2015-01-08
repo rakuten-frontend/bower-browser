@@ -130,8 +130,18 @@ body {
     margin-top: 1px;
     margin-right: 0.2em;
   }
-  .btn {
-    min-width: 70px;
+  .action {
+    .btn-single {
+      min-width: 80px;
+    }
+    .btn-multiple {
+      min-width: 60px;
+    }
+    .dropdown-toggle {
+      width: 20px;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 
