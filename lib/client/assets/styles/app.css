@@ -181,7 +181,7 @@ body {
 }
 
 .console-wrapper {
-  overflow: auto;
+  overflow-y: scroll;
   height: 200px;
   margin-right: -100px;
   padding-right: 100px;
@@ -218,9 +218,6 @@ body {
   white-space: pre;
   word-wrap: normal;
   background: none;
-}
-.log code {
-  white-space: pre;
 }
 
 
