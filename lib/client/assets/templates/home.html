@@ -1,61 +1,63 @@
-<h1 class="project-title">{{bower.json.name || bower.name}} <small>{{bower.json.version}}</small></h1>
-<div>{{bower.path}} <a class="btn btn-link btn-xs reload" title="Reload bower.json" ng-click="bower.reload()"><span class="glyphicon glyphicon-repeat"></span></a></div>
-<hr>
-<div ng-if="!bower.error">
-  <div ng-if="bower.json.dependencies">
-    <h2>dependencies</h2>
-    <table class="table table-hover">
-      <colgroup>
-        <col style="width: 40%;">
-        <col style="width: 30%;">
-        <col style="width: 30%;">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Version</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="(name, version) in bower.json.dependencies">
-          <th>{{name}}</th>
-          <td>{{version}}</td>
-          <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name, {options: '--save'})" ng-disabled="process.isInQueue('uninstall-' + name)">Uninstall</button></td>
-        </tr>
-      </tbody>
-    </table>
+<div ng-if="bower.loaded">
+  <h1 class="project-title">{{bower.json.name || bower.name}} <small>{{bower.json.version}}</small></h1>
+  <div>{{bower.path}} <a class="btn btn-link btn-xs reload" title="Reload bower.json" ng-click="bower.load()"><span class="glyphicon glyphicon-repeat"></span></a></div>
+  <hr>
+  <div ng-if="bower.loaded && !bower.error">
+    <div ng-if="bower.json.dependencies">
+      <h2>dependencies</h2>
+      <table class="table table-hover">
+        <colgroup>
+          <col style="width: 40%;">
+          <col style="width: 30%;">
+          <col style="width: 30%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Version</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(name, version) in bower.json.dependencies">
+            <th>{{name}}</th>
+            <td>{{version}}</td>
+            <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name, {options: '--save'})" ng-disabled="process.isInQueue('uninstall-' + name)">Uninstall</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-if="bower.json.devDependencies">
+      <h2>devDependencies</h2>
+      <table class="table table-hover">
+        <colgroup>
+          <col style="width: 40%;">
+          <col style="width: 30%;">
+          <col style="width: 30%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Version</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(name, version) in bower.json.devDependencies">
+            <th>{{name}}</th>
+            <td>{{version}}</td>
+            <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name, {options: '--save-dev'})" ng-disabled="process.isInQueue('uninstall-' + name)">Uninstall</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="home-action">
+      <button type="button" class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')"><span class="glyphicon glyphicon-save"></span> Install to project folder</button>
+      <button type="button" class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')"><span class="glyphicon glyphicon-refresh"></span> Update all</button>
+    </div>
   </div>
-  <div ng-if="bower.json.devDependencies">
-    <h2>devDependencies</h2>
-    <table class="table table-hover">
-      <colgroup>
-        <col style="width: 40%;">
-        <col style="width: 30%;">
-        <col style="width: 30%;">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Version</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="(name, version) in bower.json.devDependencies">
-          <th>{{name}}</th>
-          <td>{{version}}</td>
-          <td class="text-right"><button type="button" class="btn btn-default btn-xs" ng-click="bower.uninstall(name, {options: '--save-dev'})" ng-disabled="process.isInQueue('uninstall-' + name)">Uninstall</button></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="message" ng-if="bower.error">
+    <p class="text-danger"><strong>Failed to load bower.json</strong><br>{{bower.message}}</p>
+    <a class="btn btn-default reload" ng-click="bower.load()"><span class="glyphicon glyphicon-repeat"></span> Reload</a>
   </div>
-  <div class="home-action">
-    <button type="button" class="btn btn-default" ng-click="bower.install()" ng-disabled="process.isInQueue('install')"><span class="glyphicon glyphicon-save"></span> Install to project folder</button>
-    <button type="button" class="btn btn-default" ng-click="bower.update()" ng-disabled="process.isInQueue('update')"><span class="glyphicon glyphicon-refresh"></span> Update all</button>
-  </div>
-</div>
-<div class="message" ng-if="bower.error">
-  <p class="text-danger"><strong>Failed to load bower.json</strong><br>{{bower.message}}</p>
-  <a class="btn btn-default reload" ng-click="bower.reload()"><span class="glyphicon glyphicon-repeat"></span> Reload</a>
 </div>
