@@ -25,6 +25,9 @@ Manage your Bower components in the web GUI! :-)
 * `--port <number>`  
   Port number of bower-browser server. (default: `3000`)
 
+* `--cache <number>`  
+  Cache TTL for package list API. Measured in seconds. (default: `86400` = 24hours)
+
 * `--skip-open`  
   Prevent opening your browser at the start.
 
@@ -44,9 +47,10 @@ bowerBrowser();
 
 // Or start with options you like.
 bowerBrowser({
-  path: 'path/to/project',  // Location of bower.json. Default is null (cwd).
-  port: 8080,               // Port number. Default is 3000.
-  open: false               // Prevent opening browser. Default is true (open automatically).
+  path: 'path/to/project',  // Location of bower.json. default: null (use process.cwd())
+  port: 8080,               // Port number. default: 3000
+  cache: 0,                 // Cache TTL. Set 0 to force to fetch API. default: 86400 (24hrs)
+  open: false               // Prevent opening browser. default: true (open automatically)
 });
 ```
 

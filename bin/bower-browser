@@ -10,6 +10,7 @@ program
   .usage('[options]')
   .option('--path <directory>', 'location of bower.json (default: cwd)')
   .option('--port <number>', 'port number of bower-browser server (default: 3000)', parseInt)
+  .option('--cache <number>', 'cache TTL for package list API (default: 86400 = 24hours)', parseInt)
   .option('--skip-open', 'prevent opening your browser at the start')
   .parse(process.argv);
 
