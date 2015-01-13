@@ -69,8 +69,8 @@
     Your search &quot;{{service.query}}&quot; did not match any packages.
   </p>
   <p class="text-danger message" ng-if="service.loadingError">
-    Couldn't fetch packages list from the registry.<br>
-    Please try again later.
+    <strong>Failed to load package list</strong><br>
+    Please restart bower-browser with <code>--cache 0</code> option.
   </p>
 </div>
 <div class="text-center" ng-show="service.loaded && service.count > 0">
