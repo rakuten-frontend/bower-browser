@@ -44,6 +44,12 @@ body {
   margin-bottom: 30px;
 }
 
+.footer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 .app-title {
   margin-top: 0;
   margin-bottom: 20px;
