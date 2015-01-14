@@ -56,6 +56,10 @@ body {
   font-size: 20px;
 }
 
+.navigation .glyphicon {
+  margin-right: 6px;
+}
+
 .project-title {
   margin-top: 0;
   margin-bottom: 20px;

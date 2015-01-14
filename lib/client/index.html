@@ -10,7 +10,15 @@
     <div class="container main">
       <div class="row">
         <div class="col-md-3 navigation">
-          <div ng-controller="NavigationController" ng-include="templateUrl"></div>
+          <div class="app-title">bower-browser</div>
+          <ul class="nav nav-pills nav-stacked">
+            <li ui-sref-active="active">
+              <a ui-sref="home"><span class="glyphicon glyphicon-home"></span> My project</a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="search.results"><span class="glyphicon glyphicon-search"></span> Packages</a>
+            </li>
+          </ul>
         </div>
         <div class="col-md-9 content">
           <div ui-view autoscroll></div>
@@ -43,7 +51,6 @@
     <script src="/assets/scripts/controllers/search.js"></script>
     <script src="/assets/scripts/controllers/search-results.js"></script>
     <script src="/assets/scripts/controllers/console.js"></script>
-    <script src="/assets/scripts/controllers/navigation.js"></script>
     <script src="/assets/scripts/services/socket.js"></script>
     <script src="/assets/scripts/services/bower.js"></script>
     <script src="/assets/scripts/services/process.js"></script>
