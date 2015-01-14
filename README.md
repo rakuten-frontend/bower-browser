@@ -15,7 +15,7 @@ $ cd path/to/your-project
 $ bower-browser
 ```
 
-Then, web browser will open `http://localhost:3000` automatically.  
+Then, web browser will open `http://localhost:3010` automatically.  
 Manage your Bower components in the web GUI! :-)
 
 ### CLI Options
@@ -23,7 +23,7 @@ Manage your Bower components in the web GUI! :-)
   Location of bower.json. (default: cwd)
 
 * `--port <number>`  
-  Port number of bower-browser server. (default: `3000`)
+  Port number of bower-browser server. (default: `3010`)
 
 * `--cache <number>`  
   Cache TTL for package list API. Measured in seconds. (default: `86400` = 24hours)
@@ -48,7 +48,7 @@ bowerBrowser();
 // Or start with options you like.
 bowerBrowser({
   path: 'path/to/project',  // Location of bower.json. default: null (use process.cwd())
-  port: 8080,               // Port number. default: 3000
+  port: 8080,               // Port number. default: 3010
   cache: 0,                 // Cache TTL. Set 0 to force to fetch API. default: 86400 (24hrs)
   open: false               // Prevent opening browser. default: true (open automatically)
 });
