@@ -43,6 +43,7 @@
   ],
   "dependencies": {
     "async": "^0.9.0",
+    "chalk": "^0.5.1",
     "commander": "^2.5.0",
     "connect": "^3.3.3",
     "gaze": "^0.6.4",
