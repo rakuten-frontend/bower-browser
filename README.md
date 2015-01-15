@@ -20,13 +20,13 @@ Manage your Bower components in the web GUI! :-)
 
 ### CLI Options
 * `--path <directory>`  
-  Location of bower.json. (default: cwd)
+  Location of bower.json. (default: use `process.cwd()`)
 
 * `--port <number>`  
   Port number of bower-browser server. (default: `3010`)
 
-* `--cache <number>`  
-  Cache TTL for package list API. Measured in seconds. (default: `86400` = 24hours)
+* `--cache <seconds>`  
+  Cache TTL for package list API. Set `0` to force to fetch API. (default: `86400` = 24hours)
 
 * `--skip-open`  
   Prevent opening your browser at the start.
