@@ -4,6 +4,13 @@
 
 ![bower-browser](resources/screenshot.png)
 
+## Features
+* Search from Bower registry
+* Install packages with various options
+* Realtime log
+* Display bower.json data
+* Update or uninstall local Bower components
+
 ## Installation
 
 ```shell
