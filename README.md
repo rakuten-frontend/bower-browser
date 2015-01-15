@@ -1,6 +1,6 @@
 # bower-browser [![NPM Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url]
 
-> Browser-based GUI for managing Bower components.
+> Browser-based GUI manager of Bower.
 
 ![bower-browser](resources/screenshot.png)
 
