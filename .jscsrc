@@ -10,6 +10,7 @@
     "beforeOpeningCurlyBrace": true
   },
   "disallowSpacesInAnonymousFunctionExpression": null,
+  "disallowKeywordsOnNewLine": [],
   "maximumLineLength": null,
   "requireCapitalizedConstructors": true,
   "requireDotNotation": true,
