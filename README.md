@@ -2,6 +2,8 @@
 
 > Browser-based GUI for managing Bower components.
 
+![bower-browser](resources/screenshot.png)
+
 ## Installation
 
 ```shell
