@@ -8,6 +8,7 @@ var assetsDir = './lib/client/assets';
 var scripts = [
   './*.js',
   './lib/*.js',
+  './test/*.js',
   assetsDir + '/scripts/**/*.js'
 ];
 
@@ -19,6 +20,14 @@ gulp.task('lint', function () {
     $.jshint.reporter('jshint-stylish'),
     $.jshint.reporter('fail')
   );
+});
+
+gulp.task('mocha', function () {
+  return gulp.src('test/*.js', {read: false})
+    .pipe($.mocha({reporter: 'spec'}))
+    .once('end', function () {
+      process.exit();
+    });
 });
 
 gulp.task('styles', function () {
@@ -39,6 +48,6 @@ gulp.task('watch', function () {
   gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
 });
 
-gulp.task('test', ['lint']);
+gulp.task('test', ['lint', 'mocha']);
 gulp.task('build', ['styles']);
 gulp.task('default', ['test', 'build']);
