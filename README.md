@@ -44,6 +44,9 @@ Manage your Bower components in the web GUI! :-)
 * `--skip-open`  
   Prevent opening your browser at the start.
 
+* `--silent`  
+  Print nothing to stdout.
+
 * `-h`, `--help`  
   Output usage information.
 
@@ -63,7 +66,8 @@ bowerBrowser({
   path: 'path/to/project',  // Location of bower.json. default: null (use process.cwd())
   port: 8080,               // Port number. default: 3010
   cache: 0,                 // Cache TTL. Set 0 to force to fetch API. default: 86400 (24hrs)
-  open: false               // Prevent opening browser. default: true (open automatically)
+  open: false,              // Prevent opening browser. default: true (open automatically)
+  silent: true              // Print nothing to stdout. default: false
 });
 ```
 

@@ -12,6 +12,7 @@ program
   .option('--port <number>', 'port number of bower-browser server (default: 3010)', parseInt)
   .option('--cache <seconds>', 'cache TTL for package list API (default: 86400 = 24hours)', parseInt)
   .option('--skip-open', 'prevent opening your browser at the start')
+  .option('--silent', 'print nothing to stdout')
   .parse(process.argv);
 
 cli(program);
