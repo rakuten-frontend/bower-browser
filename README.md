@@ -42,7 +42,7 @@ Manage your Bower components in the web GUI! :-)
   Cache TTL for package list API. Set `0` to force to fetch API. (default: `86400` = 24hours)
 
 * `--skip-open`  
-  Prevent opening your browser at the start.
+  Prevent opening web browser at the start.
 
 * `--silent`  
   Print nothing to stdout.
