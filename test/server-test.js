@@ -7,6 +7,8 @@ var bowerBrowser = require('../lib/');
 
 describe('Server', function () {
 
+  this.timeout(10000);
+
   it('should return HTTP response', function (done) {
     var app = bowerBrowser({
       path: 'test/fixtures',
