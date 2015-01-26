@@ -55,21 +55,51 @@ Manage your Bower components in the web GUI! :-)
 
 ## API
 
+### Quick Usage
+
+```javascript
+// Run bower-browser using default config.
+require('bower-browser')();
+```
+
+### Advanced
+
 ```javascript
 var bowerBrowser = require('bower-browser');
 
-// Start the application with default config.
-bowerBrowser();
-
-// Or start with options you like.
-bowerBrowser({
+// Start app with options you like.
+var app = bowerBrowser({
   path: 'path/to/project',  // Location of bower.json. default: null (use process.cwd())
   port: 8080,               // Port number. default: 3010
   cache: 0,                 // Cache TTL. Set 0 to force to fetch API. default: 86400 (24hrs)
   open: false,              // Prevent opening browser. default: true (open automatically)
   silent: true              // Print nothing to stdout. default: false
 });
+
+// Events
+app.on('start', function () {
+  console.log('Started bower-browser!');
+});
+
+// Methods
+app.close();
 ```
+
+**NOTE: Events and methods are experimental for now. They might be updated.**
+
+#### Events
+* `on('start', callback)`  
+  When the web server is started.
+
+* `on('close', callback)`  
+  When the web server and all wathers are closed.
+
+* `on('log', callback(message))`  
+  When log message is received from bower execution.
+
+#### Methods
+* `close()`  
+  Close web server and all watchers.
 
 ## License
 Copyright (c) 2014-2015 Rakuten, Inc. Licensed under the [MIT License](LICENSE).
