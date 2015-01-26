@@ -9,6 +9,7 @@ describe('Server', function () {
 
   it('should return HTTP response', function (done) {
     var app = bowerBrowser({
+      path: 'test/fixtures',
       open: false,
       silent: true
     });
@@ -23,6 +24,7 @@ describe('Server', function () {
 
   it('should listen specified port', function (done) {
     var app = bowerBrowser({
+      path: 'test/fixtures',
       open: false,
       silent: true,
       port: 3011
