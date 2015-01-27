@@ -21,6 +21,9 @@
 $ npm install -g bower-browser
 ```
 
+Install with `-g` option for command line use, `--save` or `--save-dev` for accessing [module API](#api).  
+[Grunt plugin](https://github.com/rakuten-frontend/grunt-bower-browser) is also available.
+
 ## Usage
 
 ```shell
@@ -53,9 +56,32 @@ Manage your Bower components in the web GUI! :-)
 * `-V`, `--version`  
   Output the version number.
 
+## Integration with Task Runner
+
+### Gulp
+
+```javascript
+var bowerBrowser = require('bower-browser');
+
+gulp.task('bower-browser', function () {
+  bowerBrowser({
+    // Options here.
+  });
+});
+
+// Alias for running preview server and bower-browser at the same time.
+gulp.task('serve', ['connect', 'bower-browser', 'watch'], function () {
+  // ...
+});
+
+```
+
+### Grunt
+Use [grunt-bower-browser](https://github.com/rakuten-frontend/grunt-bower-browser) plugin.
+
 ## API
 
-### Quick Usage
+### Quick Start
 
 ```javascript
 // Run bower-browser using default config.
