@@ -72,11 +72,14 @@ body {
 
 .reload {
   .glyphicon {
-    transition: transform 500ms;
+    transition-property: transform;
   }
   &:active .glyphicon {
     transform: rotate(-360deg);
     transition-duration: 0;
+  }
+  &:not(:active) .glyphicon {
+    transition-duration: 500ms;
   }
 }
 

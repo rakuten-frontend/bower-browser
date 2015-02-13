@@ -66,8 +66,8 @@ body {
 }
 
 .reload .glyphicon {
-  -webkit-transition: -webkit-transform 500ms;
-          transition: transform 500ms;
+  -webkit-transition-property: -webkit-transform;
+          transition-property: transform;
 }
 .reload:active .glyphicon {
   -webkit-transform: rotate(-360deg);
@@ -75,6 +75,10 @@ body {
           transform: rotate(-360deg);
   -webkit-transition-duration: 0;
           transition-duration: 0;
+}
+.reload:not(:active) .glyphicon {
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
 }
 
 .home-action {
