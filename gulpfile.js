@@ -3,14 +3,19 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var pipe = require('multipipe');
+var del = require('del');
 
-var assetsDir = './lib/client/assets';
+var assetsDir = './client/assets';
 var scripts = [
   './*.js',
   './lib/*.js',
   './test/*.js',
   assetsDir + '/scripts/**/*.js'
 ];
+
+gulp.task('clean', function (callback) {
+  del(['./lib/public'], callback);
+});
 
 gulp.task('lint', function () {
   return pipe(
@@ -22,7 +27,7 @@ gulp.task('lint', function () {
   );
 });
 
-gulp.task('mocha', function () {
+gulp.task('mocha', ['dist'], function () {
   return gulp.src('test/*.js', {read: false})
     .pipe($.mocha({reporter: 'spec'}))
     .once('end', function () {
@@ -43,11 +48,15 @@ gulp.task('styles', function () {
   .pipe(gulp.dest(assetsDir + '/styles'));
 });
 
+gulp.task('dist', ['clean', 'styles'], function () {
+  return gulp.src('./client/**')
+    .pipe(gulp.dest('./lib/public'));
+});
+
 gulp.task('watch', function () {
   gulp.watch(scripts, ['lint']);
   gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
 });
 
 gulp.task('test', ['lint', 'mocha']);
-gulp.task('build', ['styles']);
-gulp.task('default', ['test', 'build']);
+gulp.task('default', ['test']);
