@@ -4,4 +4,4 @@ node_js:
 before_install:
   - npm install -g bower gulp
 before_script:
-  - cd client && bower install
+  - cd client && bower install && cd -
