@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var pipe = require('multipipe');
+var runSequence = require('run-sequence');
 var del = require('del');
 
 var assetsDir = './client/assets';
@@ -27,7 +28,7 @@ gulp.task('lint', function () {
   );
 });
 
-gulp.task('mocha', ['dist'], function () {
+gulp.task('mocha', function () {
   return gulp.src('test/*.js', {read: false})
     .pipe($.mocha({reporter: 'spec'}))
     .once('end', function () {
@@ -37,19 +38,22 @@ gulp.task('mocha', ['dist'], function () {
 
 gulp.task('styles', function () {
   return $.rubySass(assetsDir + '/styles/', {
-    style: 'expanded',
-    sourcemap: true
-  })
-  .on('error', function (err) {
-    console.error('Error!', err.message);
-  })
-  .pipe($.autoprefixer())
-  .pipe($.sourcemaps.write('./'))
-  .pipe(gulp.dest(assetsDir + '/styles'));
+      style: 'expanded',
+      sourcemap: true
+    })
+    .on('error', function (err) {
+      console.error('Error!', err.message);
+    })
+    .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('./lib/public/assets/styles'));
 });
 
-gulp.task('dist', ['clean', 'styles'], function () {
-  return gulp.src('./client/**')
+gulp.task('build', ['styles'], function () {
+  return gulp.src([
+      './client/**',
+      '!./client/assets/styles/**'
+    ])
     .pipe(gulp.dest('./lib/public'));
 });
 
@@ -58,5 +62,7 @@ gulp.task('watch', function () {
   gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
 });
 
-gulp.task('test', ['lint', 'mocha']);
+gulp.task('test', ['clean'], function (callback) {
+  runSequence('lint', 'build', 'mocha', callback);
+});
 gulp.task('default', ['test']);

@@ -66,6 +66,7 @@
     "gulp-ruby-sass": "^1.0.0-alpha",
     "gulp-sourcemaps": "^1.2.8",
     "jshint-stylish": "^1.0.0",
-    "multipipe": "^0.1.2"
+    "multipipe": "^0.1.2",
+    "run-sequence": "^1.0.2"
   }
 }
