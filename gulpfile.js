@@ -47,14 +47,20 @@ gulp.task('scripts', function () {
   }, watchify.args));
   var bundle = function () {
     return bundler.bundle()
-      .on('error', $.util.log.bind($.util, 'Browserify Error'))
+      .on('error', function (error) {
+        $.util.log($.util.colors.red('Browserify error:') + '\n' + error.message);
+      })
       .pipe(source('app.js'))
       .pipe(buffer())
       .pipe($.sourcemaps.init({loadMaps: true}))
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('./lib/public/assets/scripts'));
   };
-  bundler.on('update', bundle);
+  bundler
+    .on('update', bundle)
+    .on('log', function (message) {
+      $.util.log('Browserify log:\n' + message);
+    });
   return bundle();
 });
 
@@ -63,8 +69,8 @@ gulp.task('styles', function () {
       style: 'expanded',
       sourcemap: true
     })
-    .on('error', function (err) {
-      console.error('Error!', err.message);
+    .on('error', function (error) {
+      $.util.log($.util.colors.red('Sass error:') + '\n' + error.message);
     })
     .pipe($.autoprefixer())
     .pipe($.sourcemaps.write('./'))
@@ -87,9 +93,8 @@ gulp.task('build', ['scripts', 'styles', 'bootstrap'], function () {
     .pipe(gulp.dest('./lib/public'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['scripts'], function () {
   gulp.watch(scripts, ['lint']);
-  gulp.watch(assetsDir + '/scripts/**/*.js', ['scripts']);
   gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
 });
 
