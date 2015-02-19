@@ -1,6 +1,5 @@
 'use strict';
 
-var angular = require('angular');
 var _ = require('lodash');
 
 var ignore = require('../configs/ignore');
@@ -8,8 +7,9 @@ var whitelist = require('../configs/whitelist');
 
 var api = '/api/bower-component-list.json';
 
-angular.module('bowerBrowser')
-  .factory('SearchService', function ($http) {
+module.exports = [
+  '$http',
+  function ($http) {
 
     var defaultParams = {
       query: '',
@@ -177,4 +177,5 @@ angular.module('bowerBrowser')
 
     return service;
 
-  });
+  }
+];

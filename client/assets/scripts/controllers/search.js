@@ -1,9 +1,11 @@
 'use strict';
 
-var angular = require('angular');
-
-angular.module('bowerBrowser')
-  .controller('SearchController', function ($scope, $state, $timeout, SearchService) {
+module.exports = [
+  '$scope',
+  '$state',
+  '$timeout',
+  'SearchService',
+  function ($scope, $state, $timeout, SearchService) {
 
     var timer;
 
@@ -48,4 +50,5 @@ angular.module('bowerBrowser')
       $scope.handleFocus();
     });
 
-  });
+  }
+];

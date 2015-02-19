@@ -1,10 +1,14 @@
 'use strict';
 
-var angular = require('angular');
 var _ = require('lodash');
 
-angular.module('bowerBrowser')
-  .controller('SearchResultsController', function ($scope, $state, BowerService, ProcessService, SearchService) {
+module.exports = [
+  '$scope',
+  '$state',
+  'BowerService',
+  'ProcessService',
+  'SearchService',
+  function ($scope, $state, BowerService, ProcessService, SearchService) {
 
     // Properties
     $scope.service = SearchService;
@@ -56,4 +60,5 @@ angular.module('bowerBrowser')
     // Initialize
     $scope.service.setParams($state.params);
 
-  });
+  }
+];

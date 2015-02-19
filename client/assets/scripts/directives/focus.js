@@ -1,9 +1,9 @@
 'use strict';
 
-var angular = require('angular');
-
-angular.module('bowerBrowser')
-  .directive('appFocus', function ($timeout, $parse) {
+module.exports = [
+  '$timeout',
+  '$parse',
+  function ($timeout, $parse) {
 
     return {
       restrict: 'A',
@@ -22,4 +22,5 @@ angular.module('bowerBrowser')
       }
     };
 
-  });
+  }
+];

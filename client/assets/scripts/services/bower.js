@@ -1,10 +1,11 @@
 'use strict';
 
-var angular = require('angular');
 var _ = require('lodash');
 
-angular.module('bowerBrowser')
-  .factory('BowerService', function (SocketService, ProcessService) {
+module.exports = [
+  'SocketService',
+  'ProcessService',
+  function (SocketService, ProcessService) {
 
     var service = {
 
@@ -90,4 +91,5 @@ angular.module('bowerBrowser')
 
     return service;
 
-  });
+  }
+];

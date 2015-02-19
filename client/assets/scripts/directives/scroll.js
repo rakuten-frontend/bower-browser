@@ -1,9 +1,8 @@
 'use strict';
 
-var angular = require('angular');
-
-angular.module('bowerBrowser')
-  .directive('appScroll', function ($timeout) {
+module.exports = [
+  '$timeout',
+  function ($timeout) {
 
     return {
       restrict: 'A',
@@ -17,4 +16,5 @@ angular.module('bowerBrowser')
       }
     };
 
-  });
+  }
+];

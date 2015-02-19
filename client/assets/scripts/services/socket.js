@@ -1,10 +1,10 @@
 'use strict';
 
-var angular = require('angular');
 var io = require('socket.io-client');
 
-angular.module('bowerBrowser')
-  .factory('SocketService', function ($rootScope) {
+module.exports = [
+  '$rootScope',
+  function ($rootScope) {
 
     var socket = io();
     var service = {
@@ -35,4 +35,5 @@ angular.module('bowerBrowser')
 
     return service;
 
-  });
+  }
+];

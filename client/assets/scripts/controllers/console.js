@@ -1,9 +1,10 @@
 'use strict';
 
-var angular = require('angular');
-
-angular.module('bowerBrowser')
-  .controller('ConsoleController', function ($scope, $timeout, ProcessService) {
+module.exports = [
+  '$scope',
+  '$timeout',
+  'ProcessService',
+  function ($scope, $timeout, ProcessService) {
 
     // Properties
     $scope.templateUrl = '/assets/templates/console.html';
@@ -42,4 +43,5 @@ angular.module('bowerBrowser')
       }
     });
 
-  });
+  }
+];
