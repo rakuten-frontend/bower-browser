@@ -7,6 +7,7 @@ var buffer = require('vinyl-buffer');
 var pipe = require('multipipe');
 var runSequence = require('run-sequence');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var del = require('del');
 
 var assetsDir = './client/assets';
@@ -40,16 +41,21 @@ gulp.task('mocha', function () {
 });
 
 gulp.task('scripts', function () {
-  var bundler = browserify({
+  var bundler = watchify(browserify({
     entries: [assetsDir + '/scripts/app.js'],
     debug: true
-  });
-  return bundler.bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe($.sourcemaps.init({loadMaps: true}))
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('./lib/public/assets/scripts'));
+  }, watchify.args));
+  var bundle = function () {
+    return bundler.bundle()
+      .on('error', $.util.log.bind($.util, 'Browserify Error'))
+      .pipe(source('app.js'))
+      .pipe(buffer())
+      .pipe($.sourcemaps.init({loadMaps: true}))
+      .pipe($.sourcemaps.write('./'))
+      .pipe(gulp.dest('./lib/public/assets/scripts'));
+  };
+  bundler.on('update', bundle);
+  return bundle();
 });
 
 gulp.task('styles', function () {
@@ -83,6 +89,7 @@ gulp.task('build', ['scripts', 'styles', 'bootstrap'], function () {
 
 gulp.task('watch', function () {
   gulp.watch(scripts, ['lint']);
+  gulp.watch(assetsDir + '/scripts/**/*.js', ['scripts']);
   gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
 });
 
