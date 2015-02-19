@@ -2,7 +2,7 @@
 
 var angular = require('angular');
 
-require('bootstrap');
+require('bootstrap-sass');
 
 angular
   .module('bowerBrowser', [

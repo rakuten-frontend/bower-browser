@@ -66,6 +66,7 @@ gulp.task('scripts', function () {
 
 gulp.task('styles', function () {
   return $.rubySass(assetsDir + '/styles/', {
+      loadPath: './node_modules',
       style: 'expanded',
       sourcemap: true
     })
@@ -77,14 +78,14 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('./lib/public/assets/styles'));
 });
 
-gulp.task('bootstrap', function () {
+gulp.task('fonts', function () {
   return gulp.src([
-      './node_modules/bootstrap/**'
+      './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ])
-    .pipe(gulp.dest('./lib/public/node_modules/bootstrap'));
+    .pipe(gulp.dest('./lib/public/assets/fonts'));
 });
 
-gulp.task('build', ['scripts', 'styles', 'bootstrap'], function () {
+gulp.task('build', ['scripts', 'styles', 'fonts'], function () {
   return gulp.src([
       './client/**',
       '!./client/assets/scripts/**',

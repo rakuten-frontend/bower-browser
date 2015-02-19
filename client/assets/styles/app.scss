@@ -1,3 +1,7 @@
+$icon-font-path: "/assets/fonts/";
+
+@import "bootstrap-sass/assets/stylesheets/_bootstrap";
+
 // Override and extend Bootstrap styles
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button;
