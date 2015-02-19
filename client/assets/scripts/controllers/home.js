@@ -1,15 +1,12 @@
-(function (window) {
-  'use strict';
+'use strict';
 
-  var angular = window.angular;
+var angular = require('angular');
 
-  angular.module('bowerBrowser')
-    .controller('HomeController', function ($scope, BowerService, ProcessService) {
+angular.module('bowerBrowser')
+  .controller('HomeController', function ($scope, BowerService, ProcessService) {
 
-      // Properties
-      $scope.bower = BowerService;
-      $scope.process = ProcessService;
+    // Properties
+    $scope.bower = BowerService;
+    $scope.process = ProcessService;
 
-    });
-
-}(window));
+  });

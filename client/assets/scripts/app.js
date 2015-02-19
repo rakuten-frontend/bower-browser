@@ -1,43 +1,55 @@
-(function (window) {
-  'use strict';
+'use strict';
 
-  var angular = window.angular;
+var angular = require('angular');
 
-  angular
-    .module('bowerBrowser', [
-      'ui.router',
-      'duScroll'
-    ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $uiViewScrollProvider) {
+require('bootstrap');
 
-      // Redirects
-      $urlRouterProvider.when('/search', '/search/');
-      $urlRouterProvider.otherwise('/');
+angular
+  .module('bowerBrowser', [
+    require('angular-ui-router'),
+    require('angular-scroll')
+  ])
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $uiViewScrollProvider) {
 
-      // Routes
-      $stateProvider
-        .state('home', {
-          url: '/',
-          templateUrl: '/assets/templates/home.html',
-          controller: 'HomeController'
-        })
-        .state('search', {
-          url: '/search',
-          templateUrl: '/assets/templates/search.html',
-          controller: 'SearchController'
-        })
-        .state('search.results', {
-          url: '/?q&p&s&o',
-          templateUrl: '/assets/templates/search-results.html',
-          controller: 'SearchResultsController'
-        });
+    // Redirects
+    $urlRouterProvider.when('/search', '/search/');
+    $urlRouterProvider.otherwise('/');
 
-      // Use # url
-      $locationProvider.html5Mode(false);
+    // Routes
+    $stateProvider
+      .state('home', {
+        url: '/',
+        templateUrl: '/assets/templates/home.html',
+        controller: 'HomeController'
+      })
+      .state('search', {
+        url: '/search',
+        templateUrl: '/assets/templates/search.html',
+        controller: 'SearchController'
+      })
+      .state('search.results', {
+        url: '/?q&p&s&o',
+        templateUrl: '/assets/templates/search-results.html',
+        controller: 'SearchResultsController'
+      });
 
-      // Use $anchorScroll behavior for ui-view
-      $uiViewScrollProvider.useAnchorScroll();
+    // Use # url
+    $locationProvider.html5Mode(false);
 
-    });
+    // Use $anchorScroll behavior for ui-view
+    $uiViewScrollProvider.useAnchorScroll();
 
-}(window));
+  });
+
+require('./controllers/home');
+require('./controllers/search');
+require('./controllers/search-results');
+require('./controllers/console');
+require('./services/socket');
+require('./services/bower');
+require('./services/process');
+require('./services/search');
+require('./directives/pagination');
+require('./directives/focus');
+require('./directives/scroll');
+require('./filters/from-now');

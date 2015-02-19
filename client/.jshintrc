@@ -6,5 +6,5 @@
   "unused": true,
   "strict": true,
   "browser": true,
-  "devel": true
+  "node": true
 }

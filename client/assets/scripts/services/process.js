@@ -1,70 +1,67 @@
-(function (window) {
-  'use strict';
+'use strict';
 
-  var angular = window.angular;
-  var _ = window._;
+var angular = require('angular');
+var _ = require('lodash');
 
-  angular.module('bowerBrowser')
-    .factory('ProcessService', function (SocketService) {
+angular.module('bowerBrowser')
+  .factory('ProcessService', function (SocketService) {
 
-      var service = {
+    var service = {
 
-        // Log message
-        log: 'Welcome to bower-browser!\n',
+      // Log message
+      log: 'Welcome to bower-browser!\n',
 
-        // Process running or not
-        running: false,
+      // Process running or not
+      running: false,
 
-        // IDs of running or waiting commands
-        queue: [],
+      // IDs of running or waiting commands
+      queue: [],
 
-        // Check ID in command queue
-        isInQueue: function (id) {
-          return this.queue.indexOf(id) !== -1;
-        },
+      // Check ID in command queue
+      isInQueue: function (id) {
+        return this.queue.indexOf(id) !== -1;
+      },
 
-        // WebSocket to execute command
-        execute: function (command, id) {
-          id = id || '';
-          if (id) {
-            this.queue.push(id);
-          }
-          SocketService.emit('execute', {
-            command: command,
-            id: id
-          });
-        },
-
-        // Push log
-        pushLog: function (string) {
-          this.log += string;
-        }
-
-      };
-
-      // Receive WebSocket
-      SocketService.on('log', function (message) {
-        service.pushLog(message);
-      });
-      SocketService.on('added', function (id) {
-        if (id && !service.isInQueue(id)) {
-          service.queue.push(id);
-        }
-      });
-      SocketService.on('start', function () {
-        service.running = true;
-      });
-      SocketService.on('end', function (id) {
+      // WebSocket to execute command
+      execute: function (command, id) {
+        id = id || '';
         if (id) {
-          service.queue = _.without(service.queue, id);
+          this.queue.push(id);
         }
-      });
-      SocketService.on('done', function () {
-        service.running = false;
-      });
+        SocketService.emit('execute', {
+          command: command,
+          id: id
+        });
+      },
 
-      return service;
+      // Push log
+      pushLog: function (string) {
+        this.log += string;
+      }
 
+    };
+
+    // Receive WebSocket
+    SocketService.on('log', function (message) {
+      service.pushLog(message);
+    });
+    SocketService.on('added', function (id) {
+      if (id && !service.isInQueue(id)) {
+        service.queue.push(id);
+      }
+    });
+    SocketService.on('start', function () {
+      service.running = true;
+    });
+    SocketService.on('end', function (id) {
+      if (id) {
+        service.queue = _.without(service.queue, id);
+      }
+    });
+    SocketService.on('done', function () {
+      service.running = false;
     });
 
-}(window));
+    return service;
+
+  });

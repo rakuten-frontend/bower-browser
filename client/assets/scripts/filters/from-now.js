@@ -1,16 +1,13 @@
-(function (window) {
-  'use strict';
+'use strict';
 
-  var angular = window.angular;
-  var moment = window.moment;
+var angular = require('angular');
+var moment = require('moment');
 
-  angular.module('bowerBrowser')
-    .filter('fromNow', function () {
+angular.module('bowerBrowser')
+  .filter('fromNow', function () {
 
-      return function (date) {
-        return moment(date).fromNow();
-      };
+    return function (date) {
+      return moment(date).fromNow();
+    };
 
-    });
-
-}(window));
+  });
