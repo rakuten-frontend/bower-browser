@@ -1,5 +1,7 @@
 'use strict';
 
+var fs = require('fs');
+
 module.exports = [
   function () {
 
@@ -7,7 +9,7 @@ module.exports = [
       restrict: 'EA',
       replace: true,
       controller: 'PaginationController',
-      templateUrl: '/assets/templates/pagination.html',
+      template: fs.readFileSync(__dirname + '/../../templates/pagination.html', 'utf8'),
       scope: {
         min: '=?',
         max: '=',

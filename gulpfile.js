@@ -7,6 +7,7 @@ var buffer = require('vinyl-buffer');
 var pipe = require('multipipe');
 var runSequence = require('run-sequence');
 var browserify = require('browserify');
+var brfs = require('brfs');
 var watchify = require('watchify');
 var del = require('del');
 var minimist = require('minimist');
@@ -67,6 +68,7 @@ function buildScripts(watch) {
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('./lib/public/assets/scripts'));
   };
+  bundler.transform(brfs);
   if (watch) {
     bundler
       .on('update', bundle)
@@ -105,9 +107,7 @@ gulp.task('fonts', function () {
 
 gulp.task('build', ['scripts', 'styles', 'fonts'], function () {
   return gulp.src([
-      './client/**',
-      '!./client/assets/scripts/**',
-      '!./client/assets/styles/**'
+      './client/index.html'
     ])
     .pipe(gulp.dest('./lib/public'));
 });

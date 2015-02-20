@@ -1,5 +1,7 @@
 'use strict';
 
+var fs = require('fs');
+
 module.exports = [
   '$stateProvider',
   '$urlRouterProvider',
@@ -15,17 +17,17 @@ module.exports = [
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: '/assets/templates/home.html',
+        template: fs.readFileSync(__dirname + '/../templates/home.html', 'utf8'),
         controller: 'HomeController'
       })
       .state('search', {
         url: '/search',
-        templateUrl: '/assets/templates/search.html',
+        template: fs.readFileSync(__dirname + '/../templates/search.html', 'utf8'),
         controller: 'SearchController'
       })
       .state('search.results', {
         url: '/?q&p&s&o',
-        templateUrl: '/assets/templates/search-results.html',
+        template: fs.readFileSync(__dirname + '/../templates/search-results.html', 'utf8'),
         controller: 'SearchResultsController'
       });
 
