@@ -9,6 +9,15 @@ var runSequence = require('run-sequence');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var del = require('del');
+var minimist = require('minimist');
+
+var knownOptions = {
+  string: 'env',
+  default: {
+    env: process.env.NODE_ENV || 'production'
+  }
+};
+var options = minimist(process.argv.slice(2), knownOptions);
 
 var assetsDir = './client/assets';
 var scripts = [
@@ -40,11 +49,12 @@ gulp.task('mocha', function () {
     });
 });
 
-gulp.task('scripts', function () {
-  var bundler = watchify(browserify({
+function buildScripts(watch) {
+  var baseArgs = {
     entries: [assetsDir + '/scripts/app.js'],
     debug: true
-  }, watchify.args));
+  };
+  var bundler = watch ? watchify(browserify(baseArgs, watchify.args)) : browserify(baseArgs);
   var bundle = function () {
     return bundler.bundle()
       .on('error', function (error) {
@@ -53,15 +63,22 @@ gulp.task('scripts', function () {
       .pipe(source('app.js'))
       .pipe(buffer())
       .pipe($.sourcemaps.init({loadMaps: true}))
+      .pipe($.if(options.env === 'production', $.uglify()))
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('./lib/public/assets/scripts'));
   };
-  bundler
-    .on('update', bundle)
-    .on('log', function (message) {
-      $.util.log('Browserify log:\n' + message);
-    });
+  if (watch) {
+    bundler
+      .on('update', bundle)
+      .on('log', function (message) {
+        $.util.log('Browserify log:\n' + message);
+      });
+  }
   return bundle();
+}
+
+gulp.task('scripts', function () {
+  return buildScripts();
 });
 
 gulp.task('styles', function () {
@@ -74,6 +91,7 @@ gulp.task('styles', function () {
       $.util.log($.util.colors.red('Sass error:') + '\n' + error.message);
     })
     .pipe($.autoprefixer())
+    .pipe($.if(options.env === 'production', $.minifyCss({keepSpecialComments: 0})))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('./lib/public/assets/styles'));
 });
@@ -94,12 +112,15 @@ gulp.task('build', ['scripts', 'styles', 'fonts'], function () {
     .pipe(gulp.dest('./lib/public'));
 });
 
-gulp.task('watch', ['scripts'], function () {
+gulp.task('watch', function () {
+  options.env = 'development';
   gulp.watch(scripts, ['lint']);
   gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
+  buildScripts(true);
 });
 
 gulp.task('test', ['clean'], function (callback) {
   runSequence('lint', 'build', 'mocha', callback);
 });
+
 gulp.task('default', ['test']);
