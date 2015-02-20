@@ -19,6 +19,7 @@ angular
   .factory('BowerService', require('./services/bower'))
   .factory('ProcessService', require('./services/process'))
   .factory('SearchService', require('./services/search'))
+  .directive('appConsole', require('./directives/console'))
   .directive('appPagination', require('./directives/pagination'))
   .directive('appFocus', require('./directives/focus'))
   .directive('appScroll', require('./directives/scroll'))
