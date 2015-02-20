@@ -2,8 +2,8 @@
 
 var _ = require('lodash');
 
-var ignore = require('../configs/ignore');
-var whitelist = require('../configs/whitelist');
+var ignore = require('../values/ignore');
+var whitelist = require('../values/whitelist');
 
 var api = '/api/bower-component-list.json';
 
