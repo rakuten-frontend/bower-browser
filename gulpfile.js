@@ -20,21 +20,27 @@ var knownOptions = {
 };
 var options = minimist(process.argv.slice(2), knownOptions);
 
-var assetsDir = './client/assets';
-var scripts = [
-  './*.js',
-  './lib/*.js',
-  './test/*.js',
-  assetsDir + '/scripts/**/*.js'
-];
+var paths = {
+  src: './client',
+  dest: './lib/public',
+  scripts: [
+    './*.js',
+    './lib/*.js',
+    './test/*.js',
+    './client/scripts/**/*.js'
+  ],
+  styles: [
+    './client/styles/*.scss'
+  ]
+};
 
 gulp.task('clean', function (callback) {
-  del(['./lib/public'], callback);
+  del(paths.dest, callback);
 });
 
 gulp.task('lint', function () {
   return pipe(
-    gulp.src(scripts),
+    gulp.src(paths.scripts),
     $.jscs(),
     $.jshint(),
     $.jshint.reporter('jshint-stylish'),
@@ -52,7 +58,7 @@ gulp.task('mocha', function () {
 
 function buildScripts(watch) {
   var baseArgs = {
-    entries: [assetsDir + '/scripts/app.js'],
+    entries: [paths.src + '/assets/scripts/app.js'],
     debug: true
   };
   var bundler = watch ? watchify(browserify(baseArgs, watchify.args)) : browserify(baseArgs);
@@ -66,7 +72,7 @@ function buildScripts(watch) {
       .pipe($.sourcemaps.init({loadMaps: true}))
       .pipe($.if(options.env === 'production', $.uglify()))
       .pipe($.sourcemaps.write('./'))
-      .pipe(gulp.dest('./lib/public/assets/scripts'));
+      .pipe(gulp.dest(paths.dest + '/assets/scripts'));
   };
   bundler.transform(brfs);
   if (watch) {
@@ -84,7 +90,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-  return $.rubySass(assetsDir + '/styles/', {
+  return $.rubySass(paths.src + '/assets/styles/', {
       loadPath: './node_modules',
       style: 'expanded',
       sourcemap: true
@@ -95,27 +101,25 @@ gulp.task('styles', function () {
     .pipe($.autoprefixer())
     .pipe($.if(options.env === 'production', $.minifyCss({keepSpecialComments: 0})))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('./lib/public/assets/styles'));
+    .pipe(gulp.dest(paths.dest + '/assets/styles'));
 });
 
 gulp.task('fonts', function () {
   return gulp.src([
       './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ])
-    .pipe(gulp.dest('./lib/public/assets/fonts'));
+    .pipe(gulp.dest(paths.dest + '/assets/fonts'));
 });
 
 gulp.task('build', ['scripts', 'styles', 'fonts'], function () {
-  return gulp.src([
-      './client/index.html'
-    ])
-    .pipe(gulp.dest('./lib/public'));
+  return gulp.src('index.html', {cwd: paths.src})
+    .pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('watch', function () {
   options.env = 'development';
-  gulp.watch(scripts, ['lint']);
-  gulp.watch(assetsDir + '/styles/*.scss', ['styles']);
+  gulp.watch(paths.scripts, ['lint']);
+  gulp.watch(paths.styles, ['styles']);
   buildScripts(true);
 });
 
