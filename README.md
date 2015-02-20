@@ -16,6 +16,8 @@
 * Update or uninstall local Bower components
 
 ## Installation
+bower-browser executes `bower` in background.  
+Make sure to install [Bower](http://bower.io/) if you haven't: `$ npm install -g bower`
 
 ```shell
 $ npm install -g bower-browser
@@ -25,7 +27,6 @@ Install with `-g` option for command line use, `--save` or `--save-dev` for acce
 [Grunt plugin](https://github.com/rakuten-frontend/grunt-bower-browser) is also available.
 
 ## Usage
-
 ```shell
 $ cd path/to/your-project
 $ bower-browser
@@ -59,7 +60,6 @@ Manage your Bower components in the web GUI! :-)
 ## Integration with Build Systems
 
 ### Gulp
-
 ```javascript
 var bowerBrowser = require('bower-browser');
 
@@ -73,7 +73,6 @@ gulp.task('bower-browser', function () {
 gulp.task('serve', ['connect', 'bower-browser', 'watch'], function () {
   // ...
 });
-
 ```
 
 ### Grunt
@@ -82,14 +81,12 @@ Use [grunt-bower-browser](https://github.com/rakuten-frontend/grunt-bower-browse
 ## API
 
 ### Quick Start
-
 ```javascript
 // Run bower-browser using default config.
 require('bower-browser')();
 ```
 
 ### Advanced
-
 ```javascript
 var bowerBrowser = require('bower-browser');
 
