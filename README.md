@@ -56,7 +56,7 @@ Manage your Bower components in the web GUI! :-)
 * `-V`, `--version`  
   Output the version number.
 
-## Integration with Task Runner
+## Integration with Build Systems
 
 ### Gulp
 
