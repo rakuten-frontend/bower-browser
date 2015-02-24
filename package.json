@@ -39,7 +39,8 @@
     "index.js",
     "bin",
     "lib",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "dependencies": {
     "async": "^0.9.0",
