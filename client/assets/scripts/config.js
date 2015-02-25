@@ -29,6 +29,11 @@ module.exports = [
         url: '/?q&p&s&o',
         template: fs.readFileSync(__dirname + '/../templates/search-results.html', 'utf8'),
         controller: 'SearchResultsController'
+      })
+      .state('settings', {
+        url: '/settings',
+        template: fs.readFileSync(__dirname + '/../templates/settings.html', 'utf8'),
+        controller: 'SettingsController'
       });
 
     // Use # url

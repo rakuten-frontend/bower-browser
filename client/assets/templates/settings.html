@@ -1,0 +1,58 @@
+<h1 class="project-title">Settings</h1>
+<div class="settings-section">
+  <h2>Search</h2>
+  <div class="form-group">
+    <label>Search target fields</label>
+    <div>
+      <div class="checkbox">
+        <label><input type="checkbox" checked> Package name</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" checked> Author</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" checked> Description</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Search results</label>
+    <div>
+      <div class="checkbox">
+        <label><input type="checkbox" checked> Prioritize exact match with keyword</label>
+        <span class="glyphicon glyphicon-question-sign tip-icon" title="When you search &quot;angular&quot;, show the package named &quot;angular&quot; in the first place regardless of sort order."></span>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" checked> Do not show improper packages and duplications - <strong>recommended</strong></label>
+        <span class="glyphicon glyphicon-question-sign tip-icon" title="Exclude incompatible packages with Bower (e.g. linux) and unofficial name entries (e.g. angulerjs) from the search results."></span>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox"> Open external links in new tab</label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="settings-section">
+  <h2>Bower</h2>
+  <div class="form-group">
+    <label>Default option of installation</label>
+    <div>
+      <input type="text" class="form-control input-sm" value="--save">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Default target version of installation</label>
+    <div>
+      <input type="text" class="form-control input-sm" value="" placeholder="Latest version">
+    </div>
+  </div>
+</div>
+<div class="settings-section">
+  <h2>Reset settings</h2>
+  <div class="form-group">
+    <p>Restore all settings to their defaults.</p>
+    <div>
+      <button type="button" class="btn btn-default btn-sm">Reset settings</button>
+    </div>
+  </div>
+</div>

@@ -179,6 +179,20 @@ body {
   }
 }
 
+// Settings
+.settings-section {
+  margin-bottom: 30px;
+  .form-control {
+    max-width: 300px;
+  }
+}
+
+.tip-icon {
+  top: 2px;
+  margin-left: 5px;
+  cursor: default;
+}
+
 // Console panel
 .console-panel {
   position: fixed;
