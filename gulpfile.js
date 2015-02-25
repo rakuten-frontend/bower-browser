@@ -27,10 +27,13 @@ var paths = {
     './*.js',
     './lib/*.js',
     './test/*.js',
-    './client/scripts/**/*.js'
+    './client/assets/scripts/**/*.js'
   ],
   styles: [
-    './client/styles/*.scss'
+    './client/assets/styles/*.scss'
+  ],
+  html: [
+    './client/*.html'
   ]
 };
 
@@ -89,6 +92,10 @@ gulp.task('scripts', function () {
   return buildScripts();
 });
 
+gulp.task('scripts:watch', function () {
+  return buildScripts(true);
+});
+
 gulp.task('styles', function () {
   return $.rubySass(paths.src + '/assets/styles/', {
       loadPath: './node_modules',
@@ -111,17 +118,40 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(paths.dest + '/assets/fonts'));
 });
 
-gulp.task('build', ['scripts', 'styles', 'fonts'], function () {
-  return gulp.src('index.html', {cwd: paths.src})
+gulp.task('html', function () {
+  return gulp.src(paths.html)
+    .pipe($.if(options.env === 'production', $.useref()))
     .pipe(gulp.dest(paths.dest));
 });
 
+gulp.task('nodemon', function () {
+  return $.nodemon({
+    script: './test/server.js'
+  });
+});
+
 gulp.task('watch', function () {
-  options.env = 'development';
   gulp.watch(paths.scripts, ['lint']);
   gulp.watch(paths.styles, ['styles']);
-  buildScripts(true);
+  gulp.watch(paths.html, ['html']);
+  gulp.watch([
+      '*.html',
+      'assets/scripts/**/*.js',
+      'assets/styles/*.css',
+      'assets/fonts/*'
+    ], {
+      cwd: paths.dest
+    })
+    .on('change', $.livereload.changed);
 });
+
+gulp.task('serve', ['clean'], function (callback) {
+  options.env = 'development';
+  $.livereload.listen();
+  runSequence(['scripts:watch', 'styles', 'fonts', 'html'], 'nodemon', 'watch', callback);
+});
+
+gulp.task('build', ['scripts', 'styles', 'fonts', 'html']);
 
 gulp.task('test', ['clean'], function (callback) {
   runSequence('lint', 'build', 'mocha', callback);
