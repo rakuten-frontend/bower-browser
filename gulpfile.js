@@ -126,7 +126,8 @@ gulp.task('html', function () {
 
 gulp.task('nodemon', function () {
   return $.nodemon({
-    script: './test/server.js'
+    script: './test/server.js',
+    ignore: paths.dest
   });
 });
 
