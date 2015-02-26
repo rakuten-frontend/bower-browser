@@ -8,7 +8,7 @@ module.exports = [
     var defaults = {
       searchFields: {
         name: true,
-        author: true,
+        owner: true,
         description: true
       },
       exactMatch: true,
