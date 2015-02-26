@@ -9,7 +9,8 @@ var api = '/api/bower-component-list.json';
 
 module.exports = [
   '$http',
-  function ($http) {
+  'SettingsService',
+  function ($http, SettingsService) {
 
     var defaultParams = {
       query: '',
@@ -17,6 +18,8 @@ module.exports = [
       sorting: 'stars',
       order: 'desc'
     };
+
+    var config = SettingsService.data;
 
     var service = {
 
@@ -39,24 +42,12 @@ module.exports = [
 
       // Set params and update results
       setParams: function (params) {
-        var prev = {
-          query: this.query,
-          page: this.page,
-          sorting: this.sorting,
-          order: this.order
-        };
         this.parseParams(params);
         if (!this.loaded) {
           this.loadComponents();
         }
-        else if (this.query !== prev.query) {
+        else {
           this.search();
-        }
-        else if (this.sorting !== prev.sorting || this.order !== prev.order) {
-          this.sort();
-        }
-        else if (this.page !== prev.page) {
-          this.pick();
         }
       },
 
@@ -116,20 +107,22 @@ module.exports = [
       search: function () {
         var query = this.query;
         var list = _.filter(this.components, function (item) {
-          if (ignore.indexOf(item.name) !== -1) {
-            return false;
-          }
-          if (_.isString(item.website) && typeof whitelist[item.website] !== 'undefined') {
-            if (item.name !== whitelist[item.website]) {
+          if (config.ignoreDeprecatedPackages) {
+            if (ignore.indexOf(item.name) !== -1) {
               return false;
+            }
+            if (_.isString(item.website) && typeof whitelist[item.website] !== 'undefined') {
+              if (item.name !== whitelist[item.website]) {
+                return false;
+              }
             }
           }
           if (query === '') {
             return true;
           }
-          if (item.name.indexOf(query.toLowerCase()) !== -1 ||
-              (item.description && item.description.indexOf(query.toLowerCase()) !== -1) ||
-              item.owner.indexOf(query.toLowerCase()) !== -1) {
+          if ((config.searchFields.name && item.name.indexOf(query.toLowerCase()) !== -1) ||
+              (config.searchFields.description && item.description && item.description.indexOf(query.toLowerCase()) !== -1) ||
+              (config.searchFields.owner && item.owner.indexOf(query.toLowerCase()) !== -1)) {
             return true;
           }
           return false;
@@ -153,11 +146,13 @@ module.exports = [
         }
 
         // Prioritize exact match
-        match = _.findIndex(list, function (item) {
-          return self.query.toLowerCase() === item.name.toLowerCase();
-        });
-        if (match !== -1) {
-          list.splice(0, 0, list.splice(match, 1)[0]);
+        if (config.exactMatch) {
+          match = _.findIndex(list, function (item) {
+            return self.query.toLowerCase() === item.name.toLowerCase();
+          });
+          if (match !== -1) {
+            list.splice(0, 0, list.splice(match, 1)[0]);
+          }
         }
 
         this.list = list;

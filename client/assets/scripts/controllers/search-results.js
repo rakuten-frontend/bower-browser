@@ -8,12 +8,14 @@ module.exports = [
   'BowerService',
   'ProcessService',
   'SearchService',
-  function ($scope, $state, BowerService, ProcessService, SearchService) {
+  'SettingsService',
+  function ($scope, $state, BowerService, ProcessService, SearchService, SettingsService) {
 
     // Properties
     $scope.service = SearchService;
     $scope.bower = BowerService;
     $scope.process = ProcessService;
+    $scope.settings = SettingsService;
     $scope.sorts = [
       {
         name: 'Most stars',

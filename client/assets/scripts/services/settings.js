@@ -25,7 +25,7 @@ module.exports = [
 
       // Reset all settings to defaults
       reset: function () {
-        this.data = _.cloneDeep(defaults);
+        _.merge(this.data, defaults);
       }
 
     };
