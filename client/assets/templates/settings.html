@@ -5,13 +5,13 @@
     <label>Search target fields</label>
     <div>
       <div class="checkbox">
-        <label><input type="checkbox" checked> Package name</label>
+        <label><input type="checkbox" ng-model="settings.data.searchFields.name"> Package name</label>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" checked> Author</label>
+        <label><input type="checkbox" ng-model="settings.data.searchFields.author"> Author</label>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" checked> Description</label>
+        <label><input type="checkbox" ng-model="settings.data.searchFields.description"> Description</label>
       </div>
     </div>
   </div>
@@ -19,15 +19,15 @@
     <label>Search results</label>
     <div>
       <div class="checkbox">
-        <label><input type="checkbox" checked> Prioritize exact match with keyword</label>
+        <label><input type="checkbox" ng-model="settings.data.exactMatch"> Prioritize exact match with keyword</label>
         <span class="glyphicon glyphicon-question-sign tip-icon" title="When you search &quot;angular&quot;, show the package named &quot;angular&quot; in the first place regardless of sort order."></span>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" checked> Do not show improper packages and duplications - <strong>recommended</strong></label>
+        <label><input type="checkbox" ng-model="settings.data.ignoreDeprecatedPackages"> Do not show improper packages and duplications - <strong>recommended</strong></label>
         <span class="glyphicon glyphicon-question-sign tip-icon" title="Exclude incompatible packages with Bower (e.g. linux) and unofficial name entries (e.g. angulerjs) from the search results."></span>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox"> Open external links in new tab</label>
+        <label><input type="checkbox" ng-model="settings.data.newTab"> Open external links in new tab</label>
       </div>
     </div>
   </div>
@@ -37,13 +37,13 @@
   <div class="form-group">
     <label>Default option of installation</label>
     <div>
-      <input type="text" class="form-control input-sm" value="--save">
+      <input type="text" class="form-control input-sm" ng-model="settings.data.defaultInstallOption">
     </div>
   </div>
   <div class="form-group">
     <label>Default target version of installation</label>
     <div>
-      <input type="text" class="form-control input-sm" value="" placeholder="Latest version">
+      <input type="text" class="form-control input-sm" value="" placeholder="Latest version" ng-model="settings.data.defaultInstallVersion">
     </div>
   </div>
 </div>
@@ -52,7 +52,7 @@
   <div class="form-group">
     <p>Restore all settings to their defaults.</p>
     <div>
-      <button type="button" class="btn btn-default btn-sm">Reset settings</button>
+      <a class="btn btn-default btn-sm" ng-click="settings.reset()">Reset settings</a>
     </div>
   </div>
 </div>
