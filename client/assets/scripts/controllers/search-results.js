@@ -15,7 +15,7 @@ module.exports = [
     $scope.service = SearchService;
     $scope.bower = BowerService;
     $scope.process = ProcessService;
-    $scope.settings = SettingsService;
+    $scope.config = SettingsService.config;
     $scope.sorts = [
       {
         name: 'Most stars',

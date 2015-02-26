@@ -5,13 +5,13 @@
     <label>Search target fields</label>
     <div>
       <div class="checkbox">
-        <label><input type="checkbox" ng-model="settings.data.searchFields.name"> Package name</label>
+        <label><input type="checkbox" ng-model="config.searchFields.name"> Package name</label>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" ng-model="settings.data.searchFields.owner"> Owner</label>
+        <label><input type="checkbox" ng-model="config.searchFields.owner"> Owner</label>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" ng-model="settings.data.searchFields.description"> Description</label>
+        <label><input type="checkbox" ng-model="config.searchFields.description"> Description</label>
       </div>
     </div>
   </div>
@@ -19,15 +19,15 @@
     <label>Search results</label>
     <div>
       <div class="checkbox">
-        <label><input type="checkbox" ng-model="settings.data.exactMatch"> Prioritize exact match with keyword</label>
+        <label><input type="checkbox" ng-model="config.exactMatch"> Prioritize exact match with keyword</label>
         <span class="glyphicon glyphicon-question-sign tip-icon" title="When you search &quot;angular&quot;, show the package named &quot;angular&quot; in the first place regardless of sort order."></span>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" ng-model="settings.data.ignoreDeprecatedPackages"> Do not show improper packages and duplications - <strong>recommended</strong></label>
+        <label><input type="checkbox" ng-model="config.ignoreDeprecatedPackages"> Do not show improper packages and duplications - <strong>recommended</strong></label>
         <span class="glyphicon glyphicon-question-sign tip-icon" title="Exclude incompatible packages with Bower (e.g. linux) and unofficial name entries (e.g. angulerjs) from the search results."></span>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox" ng-model="settings.data.newTab"> Open external links in new tab</label>
+        <label><input type="checkbox" ng-model="config.newTab"> Open external links in new tab</label>
       </div>
     </div>
   </div>
@@ -37,13 +37,13 @@
   <div class="form-group">
     <label>Default options of installation</label>
     <div>
-      <input type="text" class="form-control input-sm" ng-model="settings.data.defaultInstallOptions">
+      <input type="text" class="form-control input-sm" ng-model="config.defaultInstallOptions">
     </div>
   </div>
   <div class="form-group">
     <label>Default target version of installation</label>
     <div>
-      <input type="text" class="form-control input-sm" value="" placeholder="Latest version" ng-model="settings.data.defaultInstallVersion">
+      <input type="text" class="form-control input-sm" value="" placeholder="Latest version" ng-model="config.defaultInstallVersion">
     </div>
   </div>
 </div>

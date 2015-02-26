@@ -21,16 +21,16 @@ module.exports = [
     var service = {
 
       // Active settings
-      data: {},
+      config: {},
 
       // Reset all settings to defaults
       reset: function () {
-        _.merge(this.data, defaults);
+        _.merge(this.config, defaults);
       }
 
     };
 
-    // Initialize setting data
+    // Initialize settings
     service.reset();
 
     return service;

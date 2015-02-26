@@ -7,6 +7,7 @@ module.exports = [
 
     // Properties
     $scope.settings = SettingsService;
+    $scope.config = SettingsService.config;
 
   }
 ];

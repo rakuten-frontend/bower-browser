@@ -19,7 +19,7 @@ module.exports = [
       order: 'desc'
     };
 
-    var config = SettingsService.data;
+    var config = SettingsService.config;
 
     var service = {
 
