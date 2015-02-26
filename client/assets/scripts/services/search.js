@@ -146,7 +146,7 @@ module.exports = [
         }
 
         // Prioritize exact match
-        if (config.exactMatch) {
+        if (config.exactMatch && config.searchField.name) {
           match = _.findIndex(list, function (item) {
             return self.query.toLowerCase() === item.name.toLowerCase();
           });
