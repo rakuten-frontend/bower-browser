@@ -14,7 +14,7 @@ module.exports = [
       exactMatch: true,
       ignoreDeprecatedPackages: true,
       newTab: false,
-      defaultInstallOption: '--save',
+      defaultInstallOptions: '--save',
       defaultInstallVersion: ''
     };
 

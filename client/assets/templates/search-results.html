@@ -36,9 +36,9 @@
       </div>
       <div class="col-lg-3 col-sm-4 text-right">
         <div class="input-group input-group-sm action" ng-switch-when="false">
-          <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=''">
+          <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=settings.data.defaultInstallVersion">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default btn-multiple" ng-click="bower.install(component.name, {version: component.version, options: '--save'})" ng-disabled="process.isInQueue('install-' + component.name)"><span class="glyphicon glyphicon-save"></span> Install</button>
+            <button type="button" class="btn btn-default btn-multiple" ng-click="bower.install(component.name, {version: component.version, options: settings.data.defaultInstallOptions})" ng-disabled="process.isInQueue('install-' + component.name)"><span class="glyphicon glyphicon-save"></span> Install</button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-disabled="process.isInQueue('install-' + component.name)"><span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href ng-click="bower.install(component.name, {version: component.version, options: '--save'})">Install as dependency</a></li>
