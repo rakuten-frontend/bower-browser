@@ -6,7 +6,7 @@ module.exports = [
   function () {
 
     var defaults = {
-      searchFields: {
+      searchField: {
         name: true,
         owner: true,
         description: true
@@ -26,6 +26,15 @@ module.exports = [
       // Reset all settings to defaults
       reset: function () {
         _.merge(this.config, defaults);
+      },
+
+      // Warn when no search field is selected
+      hasSearchFieldWarning: function () {
+        var searchField = this.config.searchField;
+        return searchField &&
+          Object.keys(searchField).every(function (key) {
+            return searchField[key] === false;
+          });
       }
 
     };

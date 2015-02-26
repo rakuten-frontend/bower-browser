@@ -120,9 +120,9 @@ module.exports = [
           if (query === '') {
             return true;
           }
-          if ((config.searchFields.name && item.name.indexOf(query.toLowerCase()) !== -1) ||
-              (config.searchFields.description && item.description && item.description.indexOf(query.toLowerCase()) !== -1) ||
-              (config.searchFields.owner && item.owner.indexOf(query.toLowerCase()) !== -1)) {
+          if ((config.searchField.name && item.name.indexOf(query.toLowerCase()) !== -1) ||
+              (config.searchField.description && item.description && item.description.indexOf(query.toLowerCase()) !== -1) ||
+              (config.searchField.owner && item.owner.indexOf(query.toLowerCase()) !== -1)) {
             return true;
           }
           return false;
