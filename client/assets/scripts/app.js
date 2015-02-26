@@ -23,6 +23,7 @@ angular
   .factory('SettingsService', require('./services/settings'))
   .directive('appConsole', require('./directives/console'))
   .directive('appPagination', require('./directives/pagination'))
+  .directive('appPopover', require('./directives/popover'))
   .directive('appFocus', require('./directives/focus'))
   .directive('appScroll', require('./directives/scroll'))
   .filter('fromNow', require('./filters/from-now'));

@@ -21,11 +21,11 @@
     <div>
       <div class="checkbox">
         <label><input type="checkbox" ng-model="config.exactMatch"> Prioritize exact match with keyword</label>
-        <span class="glyphicon glyphicon-question-sign tip-icon" title="When you search &quot;angular&quot;, show the package named &quot;angular&quot; in the first place regardless of sort order."></span>
+        <span class="glyphicon glyphicon-question-sign tip-icon" app-popover data-trigger="hover" data-placement="top" data-content="When you search &quot;angular&quot;, show the package named &quot;angular&quot; in the first place regardless of sort order."></span>
       </div>
       <div class="checkbox">
         <label><input type="checkbox" ng-model="config.ignoreDeprecatedPackages"> Do not show improper packages and duplications - <strong>recommended</strong></label>
-        <span class="glyphicon glyphicon-question-sign tip-icon" title="Exclude incompatible packages with Bower (e.g. linux) and unofficial name entries (e.g. angulerjs) from the search results."></span>
+        <span class="glyphicon glyphicon-question-sign tip-icon" app-popover data-trigger="hover" data-placement="top" data-content="Exclude incompatible packages with Bower (e.g. linux) and unofficial name entries (e.g. angulerjs) from the search results."></span>
       </div>
       <div class="checkbox">
         <label><input type="checkbox" ng-model="config.newTab"> Open external links in new tab</label>
