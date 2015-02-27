@@ -38,13 +38,13 @@
   <div class="form-group">
     <label class="control-label">Default options of installation</label>
     <div>
-      <input type="text" class="form-control input-sm" ng-model="config.defaultInstallOptions">
+      <input type="text" class="form-control input-sm" ng-model="config.defaultInstallOptions" ng-model-options="{updateOn: 'blur'}">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label">Default target version of installation</label>
     <div>
-      <input type="text" class="form-control input-sm" value="" placeholder="Latest version" ng-model="config.defaultInstallVersion">
+      <input type="text" class="form-control input-sm" value="" placeholder="Latest version" ng-model="config.defaultInstallVersion" ng-model-options="{updateOn: 'blur'}">
     </div>
   </div>
 </div>
