@@ -42,9 +42,15 @@ module.exports = [
 
       // Set params and update results
       setParams: function (params) {
+        var self = this;
         this.parseParams(params);
         if (!this.loaded) {
-          this.loadComponents();
+          this.fetchApi(api).success(function (data) {
+            self.components = data;
+            self.list = self.components;
+            self.loaded = true;
+            self.search();
+          });
         }
         else {
           this.search();
@@ -75,23 +81,12 @@ module.exports = [
         }
       },
 
-      // Load component list
-      loadComponents: function () {
+      // Get component list from API
+      fetchApi: function (url) {
         var self = this;
         this.searching = true;
         this.loadingError = false;
-        this.fetchComponents().success(function (data) {
-          self.components = data;
-          self.list = self.components;
-          self.loaded = true;
-          self.search();
-        });
-      },
-
-      // Get component list from API
-      fetchComponents: function () {
-        var self = this;
-        return $http.get(api)
+        return $http.get(url)
           .success(function (res) {
             self.searching = false;
             return res.data;
@@ -105,8 +100,23 @@ module.exports = [
 
       // Search components using current condition
       search: function () {
-        var query = this.query;
-        var list = _.filter(this.components, function (item) {
+        var list = this.components;
+
+        list = this.filter(list, this.query);
+        list = this.sort(list, this.sorting, this.order);
+        list = this.prioritize(list, this.query);
+
+        this.list = list;
+        this.count = this.list.length;
+        this.pageCount = Math.ceil(this.count / this.limit);
+        this.from = (this.page - 1) * this.limit + 1;
+        this.to =  this.from + this.limit > this.count ? this.count : this.from + this.limit;
+        this.results = this.list.slice(this.from - 1, this.to);
+      },
+
+      // Filter items by query and config
+      filter: function (items, query) {
+        var list = _.filter(items, function (item) {
           if (config.ignoreDeprecatedPackages) {
             if (ignore.indexOf(item.name) !== -1) {
               return false;
@@ -127,45 +137,33 @@ module.exports = [
           }
           return false;
         });
-        this.list = list;
-        this.count = this.list.length;
-        this.pageCount = Math.ceil(this.count / this.limit);
-        this.sort();
+        return list;
       },
 
-      // Sort component list according to the current condition
-      sort: function () {
-        var self = this;
-        var list = _.sortBy(this.list, function (item) {
-          return item[self.sorting];
+      // Sort items
+      sort: function (items, sorting, order) {
+        var list = _.sortBy(items, function (item) {
+          return item[sorting];
         });
-        var match;
-
-        if (this.order === 'desc') {
+        if (order === 'desc') {
           list = list.reverse();
         }
-
-        // Prioritize exact match
-        if (config.exactMatch && config.searchField.name) {
-          match = _.findIndex(list, function (item) {
-            return self.query.toLowerCase() === item.name.toLowerCase();
-          });
-          if (match !== -1) {
-            list.splice(0, 0, list.splice(match, 1)[0]);
-          }
-        }
-
-        this.list = list;
-        this.pick();
+        return list;
       },
 
-      // Pick items to show
-      pick: function () {
-        var fromIndex = (this.page - 1) * this.limit;
-        var toIndex = fromIndex + this.limit;
-        this.results = this.list.slice(fromIndex, toIndex);
-        this.from = fromIndex + 1;
-        this.to = toIndex > this.count ? this.count : toIndex;
+      // Prioritize exact match
+      prioritize: function (items, query) {
+        if (!config.exactMatch || !config.searchField.name) {
+          return items;
+        }
+        var list = items;
+        var match = _.findIndex(list, function (item) {
+          return query.toLowerCase() === item.name.toLowerCase();
+        });
+        if (match !== -1) {
+          list.splice(0, 0, list.splice(match, 1)[0]);
+        }
+        return list;
       }
 
     };
