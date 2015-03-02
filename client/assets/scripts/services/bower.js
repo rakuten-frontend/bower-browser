@@ -48,7 +48,8 @@ module.exports = [
 
       // Uninstall package
       uninstall: function (name, options) {
-        ProcessService.execute(['bower uninstall', name, options.options].join(' '), 'uninstall-' + name);
+        var opts = options || {};
+        ProcessService.execute(['bower uninstall', name, opts.options].join(' '), 'uninstall-' + name);
       },
 
       // Update package

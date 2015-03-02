@@ -17,9 +17,18 @@ module.exports = [
       // IDs of running or waiting commands
       queue: [],
 
-      // Check ID in command queue
+      // Check ID(s) in command queue
       isInQueue: function (id) {
-        return this.queue.indexOf(id) !== -1;
+        var self = this;
+        if (typeof id === 'string') {
+          return this.queue.indexOf(id) !== -1;
+        }
+        if (_.isArray(id)) {
+          return _.some(id, function (val) {
+            return self.queue.indexOf(val) !== -1;
+          });
+        }
+        return false;
       },
 
       // WebSocket to execute command

@@ -38,12 +38,14 @@
         <div class="input-group input-group-sm action" ng-switch-when="false">
           <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=config.defaultInstallVersion">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default btn-multiple" ng-click="bower.install(component.name, {version: component.version, options: config.defaultInstallOptions})" ng-disabled="process.isInQueue('install-' + component.name)"><span class="glyphicon glyphicon-save"></span> Install</button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-disabled="process.isInQueue('install-' + component.name)"><span class="caret"></span></button>
+            <button type="button" class="btn btn-default btn-multiple" ng-click="bower.install(component.name, {version: component.version, options: config.defaultInstallOptions})" ng-disabled="process.isInQueue(['install-' + component.name, 'uninstall-' + component.name])"><span class="glyphicon glyphicon-save"></span> Install</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-disabled="process.isInQueue(['install-' + component.name, 'uninstall-' + component.name])"><span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href ng-click="bower.install(component.name, {version: component.version, options: '--save'})">Install as dependency</a></li>
               <li><a href ng-click="bower.install(component.name, {version: component.version, options: '--save-dev'})">Install as devDependency</a></li>
               <li><a href ng-click="bower.install(component.name, {version: component.version})">Install without save</a></li>
+              <li class="divider"></li>
+              <li><a href ng-click="bower.uninstall(component.name)">Uninstall without save</a></li>
             </ul>
           </div>
         </div>
