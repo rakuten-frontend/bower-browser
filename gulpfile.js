@@ -23,6 +23,7 @@ var options = minimist(process.argv.slice(2), knownOptions);
 var paths = {
   src: './client',
   dest: './lib/public',
+  test: './test',
   scripts: [
     './*.js',
     './lib/*.js',
@@ -52,7 +53,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('mocha', function () {
-  return gulp.src('test/*-test.js', {read: false})
+  return gulp.src(paths.test + '/*-test.js', {read: false})
     .pipe($.mocha({reporter: 'spec'}))
     .once('end', function () {
       process.exit();
@@ -126,8 +127,12 @@ gulp.task('html', function () {
 
 gulp.task('nodemon', function () {
   return $.nodemon({
-    script: './test/server.js',
-    ignore: [paths.src, paths.dest]
+    script: paths.test + '/server.js',
+    ignore: [
+      paths.src,
+      paths.dest,
+      paths.test
+    ]
   });
 });
 
