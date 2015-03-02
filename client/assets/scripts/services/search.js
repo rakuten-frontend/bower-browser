@@ -101,6 +101,7 @@ module.exports = [
         var matchedItems = this.components;
 
         matchedItems = this.find(matchedItems, this.query);
+        matchedItems = this.dedupe(matchedItems);
         matchedItems = this.sort(matchedItems, this.sorting, this.order);
         matchedItems = this.prioritize(matchedItems, this.query);
 
@@ -111,7 +112,7 @@ module.exports = [
         this.results = matchedItems.slice(this.from - 1, this.to);
       },
 
-      // Filter items by query and config
+      // Find items by query and config
       find: function (items, query) {
         var list = _.filter(items, function (item) {
           if (config.ignoreDeprecatedPackages) {
@@ -135,6 +136,13 @@ module.exports = [
           return false;
         });
         return list;
+      },
+
+      // Dedupe results
+      dedupe: function (items) {
+        return _.uniq(items.reverse(), function (item) {
+          return item.website;
+        });
       },
 
       // Sort items
