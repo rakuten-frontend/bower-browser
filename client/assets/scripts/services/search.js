@@ -25,7 +25,6 @@ module.exports = [
 
       // Properties
       components: [],
-      list: [],
       results: [],
       searching: false,
       loaded: false,
@@ -47,7 +46,6 @@ module.exports = [
         if (!this.loaded) {
           this.fetchApi(api).success(function (data) {
             self.components = data;
-            self.list = self.components;
             self.loaded = true;
             self.search();
           });
@@ -100,22 +98,21 @@ module.exports = [
 
       // Search components using current condition
       search: function () {
-        var list = this.components;
+        var matchedItems = this.components;
 
-        list = this.filter(list, this.query);
-        list = this.sort(list, this.sorting, this.order);
-        list = this.prioritize(list, this.query);
+        matchedItems = this.find(matchedItems, this.query);
+        matchedItems = this.sort(matchedItems, this.sorting, this.order);
+        matchedItems = this.prioritize(matchedItems, this.query);
 
-        this.list = list;
-        this.count = this.list.length;
+        this.count = matchedItems.length;
         this.pageCount = Math.ceil(this.count / this.limit);
         this.from = (this.page - 1) * this.limit + 1;
         this.to =  this.from + this.limit > this.count ? this.count : this.from + this.limit;
-        this.results = this.list.slice(this.from - 1, this.to);
+        this.results = matchedItems.slice(this.from - 1, this.to);
       },
 
       // Filter items by query and config
-      filter: function (items, query) {
+      find: function (items, query) {
         var list = _.filter(items, function (item) {
           if (config.ignoreDeprecatedPackages) {
             if (ignore.indexOf(item.name) !== -1) {
