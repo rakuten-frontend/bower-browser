@@ -18,13 +18,12 @@ module.exports = [
       sorting: 'stars',
       order: 'desc'
     };
-
     var config = SettingsService.config;
+    var packages = [];
 
     var service = {
 
       // Properties
-      components: [],
       results: [],
       searching: false,
       loaded: false,
@@ -45,7 +44,7 @@ module.exports = [
         this.parseParams(params);
         if (!this.loaded) {
           this.fetchApi(api).success(function (data) {
-            self.components = data;
+            packages = data;
             self.loaded = true;
             self.search();
           });
@@ -96,12 +95,12 @@ module.exports = [
           });
       },
 
-      // Search components using current condition
+      // Search packages
       search: function () {
-        var matchedItems = this.components;
+        var matchedItems = packages;
 
+        matchedItems = this.filter(matchedItems);
         matchedItems = this.find(matchedItems, this.query);
-        matchedItems = this.dedupe(matchedItems);
         matchedItems = this.sort(matchedItems, this.sorting, this.order);
         matchedItems = this.prioritize(matchedItems, this.query);
 
@@ -112,36 +111,41 @@ module.exports = [
         this.results = matchedItems.slice(this.from - 1, this.to);
       },
 
-      // Find items by query and config
-      find: function (items, query) {
+      // Exclude ignoring/duplicated packages
+      filter: function (items) {
+        if (!config.ignoreDeprecatedPackages) {
+          return items;
+        }
         var list = _.filter(items, function (item) {
-          if (config.ignoreDeprecatedPackages) {
-            if (ignore.indexOf(item.name) !== -1) {
-              return false;
-            }
-            if (_.isString(item.website) && typeof whitelist[item.website] !== 'undefined') {
-              if (item.name !== whitelist[item.website]) {
-                return false;
-              }
-            }
+          // Ignore packages
+          if (ignore.indexOf(item.name) !== -1) {
+            return false;
           }
-          if (query === '') {
-            return true;
+          // Limit to whitelisted packages
+          if (whitelist[item.website] && item.name !== whitelist[item.website]) {
+            return false;
           }
+          return true;
+        });
+        // Dedupe packages
+        list = _.uniq(list.reverse(), function (item) {
+          return item.website;
+        });
+        return list;
+      },
+
+      // Find items by query
+      find: function (items, query) {
+        if (query === '') {
+          return items;
+        }
+        return _.filter(items, function (item) {
           if ((config.searchField.name && item.name.indexOf(query.toLowerCase()) !== -1) ||
               (config.searchField.description && item.description && item.description.indexOf(query.toLowerCase()) !== -1) ||
               (config.searchField.owner && item.owner.indexOf(query.toLowerCase()) !== -1)) {
             return true;
           }
           return false;
-        });
-        return list;
-      },
-
-      // Dedupe results
-      dedupe: function (items) {
-        return _.uniq(items.reverse(), function (item) {
-          return item.website;
         });
       },
 
