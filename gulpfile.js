@@ -110,7 +110,10 @@ gulp.task('styles', function () {
       $.util.log($.util.colors.red('Sass error:') + '\n' + error.message);
     })
     .pipe($.autoprefixer())
-    .pipe($.if(options.env === 'production', $.minifyCss({keepSpecialComments: 0})))
+    .pipe($.if(options.env === 'production', $.minifyCss({
+      keepSpecialComments: 0,
+      advanced: false
+    })))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest(paths.dest + '/assets/styles'));
 });
