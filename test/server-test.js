@@ -2,7 +2,7 @@
 'use strict';
 
 var assert = require('assert');
-var http = require('http');
+var request = require('request');
 var _ = require('lodash');
 
 var bowerBrowser = require('../lib/');
@@ -20,8 +20,8 @@ describe('Server', function () {
   it('returns HTTP response', function (done) {
     var app = bowerBrowser(baseOptions);
     app.on('start', function () {
-      http.get('http://localhost:3010/', function (res) {
-        assert(res.statusCode === 200);
+      request('http://localhost:3010/', function (error, res) {
+        assert.equal(res.statusCode, 200);
         app.close();
         done();
       });
@@ -31,15 +31,14 @@ describe('Server', function () {
   it('isn\'t accessible after `close` event', function (done) {
     var app = bowerBrowser(baseOptions);
     app.on('start', function () {
-      http.get('http://localhost:3010/', function (res) {
-        assert(res.statusCode === 200);
+      request('http://localhost:3010/', function (error, res) {
+        assert.equal(res.statusCode, 200);
         app.close();
       });
     });
     app.on('close', function () {
-      http.get('http://localhost:3010/')
-      .on('error', function (error) {
-        assert(error.code = 'ECONNRESET');
+      request('http://localhost:3010/', function (error) {
+        assert(error);
         done();
       });
     });
@@ -50,8 +49,8 @@ describe('Server', function () {
       port: 3011
     }));
     app.on('start', function () {
-      http.get('http://localhost:3011/', function (res) {
-        assert(res.statusCode === 200);
+      request('http://localhost:3011/', function (error, res) {
+        assert.equal(res.statusCode, 200);
         app.close();
         done();
       });
@@ -64,26 +63,20 @@ describe('Server', function () {
       cache: 0
     }));
     app.on('start', function () {
-      http.get('http://localhost:3010/api/bower-component-list.json', function (res) {
-        var body = '';
-        assert(res.statusCode === 200);
-        res.on('data', function (chunk) {
-          body += chunk;
-        });
-        res.on('end', function () {
-          var data;
-          var isJson;
-          try {
-            data = JSON.parse(body);
-            isJson = typeof data === 'object' && data !== null;
-          }
-          catch (e) {
-            isJson = false;
-          }
-          assert(isJson);
-          app.close();
-          done();
-        });
+      request('http://localhost:3010/api/bower-component-list.json', function (error, res, body) {
+        var data;
+        var isJson;
+        assert.equal(res.statusCode, 200);
+        try {
+          data = JSON.parse(body);
+          isJson = typeof data === 'object' && data !== null;
+        }
+        catch (e) {
+          isJson = false;
+        }
+        assert(isJson);
+        app.close();
+        done();
       });
     });
   });
