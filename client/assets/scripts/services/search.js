@@ -153,7 +153,7 @@ module.exports = [
 
       // Search in string field
       matchedInString: function (query, string) {
-        if (!_.isString(string) || string === '') {
+        if (typeof string !== 'string' || string === '') {
           return false;
         }
         return string.toLowerCase().indexOf(query.toLowerCase()) !== -1;
