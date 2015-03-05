@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 (2015-03-05)
+- Add "Settings" feature. ([#4](https://github.com/rakuten-frontend/bower-browser/issues/4))
+- Add "Uninstall without save" to the package menu.
+- Dedupe search results.
+- Update dependencies.
+
 ## 0.3.1 (2015-02-24)
 - Warn and exit when `bower` is not found.
 - Warn and exit when running with root privileges.
