@@ -15,7 +15,8 @@ module.exports = [
       searchField: {
         name: true,
         owner: true,
-        description: true
+        description: true,
+        keyword: true
       },
       exactMatch: true,
       ignoreDeprecatedPackages: true,

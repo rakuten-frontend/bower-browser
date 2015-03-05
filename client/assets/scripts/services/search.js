@@ -136,16 +136,36 @@ module.exports = [
 
       // Find items by query
       find: function (items, query) {
+        var self = this;
         if (query === '') {
           return items;
         }
         return _.filter(items, function (item) {
-          if ((config.searchField.name && item.name.indexOf(query.toLowerCase()) !== -1) ||
-              (config.searchField.description && item.description && item.description.indexOf(query.toLowerCase()) !== -1) ||
-              (config.searchField.owner && item.owner.indexOf(query.toLowerCase()) !== -1)) {
+          if ((config.searchField.name && self.matchedInString(query, item.name)) ||
+              (config.searchField.owner && self.matchedInString(query, item.owner)) ||
+              (config.searchField.description && self.matchedInString(query, item.description)) ||
+              (config.searchField.keyword && self.matchedInArray(query, item.keywords))) {
             return true;
           }
           return false;
+        });
+      },
+
+      // Search in string field
+      matchedInString: function (query, string) {
+        if (!_.isString(string) || string === '') {
+          return false;
+        }
+        return string.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+      },
+
+      // Search in array field
+      matchedInArray: function (query, array) {
+        if (!_.isArray(array) || array.length === 0) {
+          return false;
+        }
+        return array.some(function (string) {
+          return query.toLowerCase() === string.toLowerCase();
         });
       },
 
