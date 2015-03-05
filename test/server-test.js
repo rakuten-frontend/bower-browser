@@ -58,4 +58,34 @@ describe('Server', function () {
     });
   });
 
+  it('fetches API and returns json', function (done) {
+    this.timeout(20000);
+    var app = bowerBrowser(_.merge({}, baseOptions, {
+      cache: 0
+    }));
+    app.on('start', function () {
+      http.get('http://localhost:3010/api/bower-component-list.json', function (res) {
+        var body = '';
+        assert(res.statusCode === 200);
+        res.on('data', function (chunk) {
+          body += chunk;
+        });
+        res.on('end', function () {
+          var data;
+          var isJson;
+          try {
+            data = JSON.parse(body);
+            isJson = typeof data === 'object' && data !== null;
+          }
+          catch (e) {
+            isJson = false;
+          }
+          assert(isJson);
+          app.close();
+          done();
+        });
+      });
+    });
+  });
+
 });
