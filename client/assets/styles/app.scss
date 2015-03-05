@@ -146,8 +146,11 @@ body {
   ul {
     margin-bottom: 0;
   }
-  .text-muted {
+  .list-inline {
+    margin-bottom: 3px;
     font-size: 13px;
+  }
+  .text-muted {
     color: #999;
   }
   .glyphicon-star {

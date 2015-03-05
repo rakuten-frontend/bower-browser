@@ -28,6 +28,11 @@
         </h3>
         <p>{{component.description}}</p>
         <div>
+          <ul class="list-inline" ng-if="component.keywords">
+            <li ng-repeat="keyword in component.keywords">
+              <a ui-sref="search.results({q: keyword, p: null})">{{keyword}}</a>
+            </li>
+          </ul>
           <ul class="list-inline text-muted">
             <li><span class="glyphicon glyphicon-star"></span>{{component.stars | number}}</li>
             <li>Updated {{component.updated | fromNow}}</li>
