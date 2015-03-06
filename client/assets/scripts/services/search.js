@@ -98,18 +98,35 @@ module.exports = [
       // Search packages
       search: function () {
         var matchedItems = packages;
+        var parsed = this.parseQuery(this.query);
+        var query = parsed.query;
+        var fields = parsed.field ? [parsed.field] :
+          _.filter(Object.keys(config.searchField), function (key) {
+            return config.searchField[key];
+          });
+        var exact = !!parsed.field;
 
         matchedItems = this.filter(matchedItems);
-        matchedItems = this.find(matchedItems, this.query);
+        matchedItems = this.find(matchedItems, query, fields, exact);
         matchedItems = this.dedupe(matchedItems);
         matchedItems = this.sort(matchedItems, this.sorting, this.order);
-        matchedItems = this.prioritize(matchedItems, this.query);
+        matchedItems = !exact ? this.prioritize(matchedItems, query) : matchedItems;
 
         this.count = matchedItems.length;
         this.pageCount = Math.ceil(this.count / this.limit);
         this.from = (this.page - 1) * this.limit + 1;
         this.to =  this.from + this.limit > this.count ? this.count : this.from + this.limit;
         this.results = matchedItems.slice(this.from - 1, this.to);
+      },
+
+      // Parse query string to {query,field} object
+      parseQuery: function (query) {
+        var fieldList = ['name', 'owner', 'description', 'keyword'];
+        var parsedField = _.find(fieldList, function (field) {
+          return query.indexOf(field + ':') === 0;
+        });
+        var parsedQuery = parsedField ? query.replace(new RegExp('^' + parsedField + ':'), '') : query;
+        return {query: parsedQuery, field: parsedField};
       },
 
       // Exclude ignoring packages
@@ -142,16 +159,20 @@ module.exports = [
       },
 
       // Find items by query
-      find: function (items, query) {
+      find: function (items, query, fields, exact) {
         var self = this;
+        var isTarget = function (fieldName) {
+          return fields.indexOf(fieldName) !== -1;
+        };
         if (query === '') {
           return items;
         }
+        fields = fields || ['name', 'owner', 'description', 'keyword'];
         return _.filter(items, function (item) {
-          if ((config.searchField.name && self.matchedInString(query, item.name)) ||
-              (config.searchField.owner && self.matchedInString(query, item.owner)) ||
-              (config.searchField.description && self.matchedInString(query, item.description)) ||
-              (config.searchField.keyword && self.matchedInArray(query, item.keywords))) {
+          if ((isTarget('name') && self.matchedInString(query, item.name, exact)) ||
+              (isTarget('owner') && self.matchedInString(query, item.owner, exact)) ||
+              (isTarget('description') && self.matchedInString(query, item.description, exact)) ||
+              (isTarget('keyword') && self.matchedInArray(query, item.keywords, exact))) {
             return true;
           }
           return false;
@@ -159,20 +180,26 @@ module.exports = [
       },
 
       // Search in string field
-      matchedInString: function (query, string) {
+      matchedInString: function (query, string, exact) {
         if (typeof string !== 'string' || string === '') {
           return false;
+        }
+        if (exact) {
+          return string.toLowerCase() === query.toLowerCase();
         }
         return string.toLowerCase().indexOf(query.toLowerCase()) !== -1;
       },
 
       // Search in array field
-      matchedInArray: function (query, array) {
+      matchedInArray: function (query, array, exact) {
         if (!_.isArray(array) || array.length === 0) {
           return false;
         }
         return array.some(function (string) {
-          return query.toLowerCase() === string.toLowerCase();
+          if (exact) {
+            return query.toLowerCase() === string.toLowerCase();
+          }
+          return string.toLowerCase().indexOf(query.toLowerCase()) !== -1;
         });
       },
 
