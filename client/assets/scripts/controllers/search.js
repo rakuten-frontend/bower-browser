@@ -3,11 +3,8 @@
 module.exports = [
   '$scope',
   '$state',
-  '$timeout',
   'SearchService',
-  function ($scope, $state, $timeout, SearchService) {
-
-    var timer;
+  function ($scope, $state, SearchService) {
 
     // Properties
     $scope.service = SearchService;
@@ -24,17 +21,9 @@ module.exports = [
       }
     };
 
-    // Incremental search with delay
-    $scope.$watch('query', function (query, prevQuery) {
-      if (query === prevQuery) {
-        return;
-      }
-      if (timer) {
-        $timeout.cancel(timer);
-      }
-      timer = $timeout(function () {
-        $state.go('search.results', {q: query, p: null});
-      }, 300);
+    // Incremental search
+    $scope.$watch('query', function (query) {
+      $state.go('search.results', {q: query, p: null});
     });
 
     // Sync input value with query param
