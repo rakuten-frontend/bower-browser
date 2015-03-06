@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.1 (2015-03-06)
+- Tweak search.
+
 ## 0.4.0 (2015-03-05)
 - Add "Settings" feature. ([#4](https://github.com/rakuten-frontend/bower-browser/issues/4))
 - Add "Uninstall without save" to the package menu.
