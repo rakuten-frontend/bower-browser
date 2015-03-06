@@ -29,7 +29,7 @@
         <p>{{component.description}}</p>
         <div>
           <ul class="list-inline" ng-if="component.keywords">
-            <li ng-repeat="keyword in component.keywords">
+            <li ng-repeat="keyword in component.keywords track by $index">
               <a ui-sref="search.results({q: keyword, p: null})">{{keyword}}</a>
             </li>
           </ul>
