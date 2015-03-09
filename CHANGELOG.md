@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.2 (2015-03-09)
+- Fix pagination bug.
+
 ## 0.4.1 (2015-03-06)
 - Tweak search.
 

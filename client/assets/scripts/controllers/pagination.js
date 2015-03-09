@@ -24,6 +24,9 @@ module.exports = [
       }
       else if ($scope.current > $scope.max - $scope.offset) {
         $scope.repeatStart = $scope.max - $scope.offset * 2;
+        if ($scope.repeatStart < $scope.min) {
+          $scope.repeatStart = $scope.min;
+        }
       }
       else {
         $scope.repeatStart = $scope.current - $scope.offset;
@@ -37,16 +40,16 @@ module.exports = [
       return $scope.current < $scope.max;
     };
     $scope.hasStart = function () {
-      return $scope.current > $scope.min + $scope.offset;
+      return $scope.repeatStart > $scope.min;
     };
     $scope.hasEnd = function () {
-      return $scope.current < $scope.max - $scope.offset;
+      return $scope.repeatStart + $scope.repeat - 1 < $scope.max;
     };
     $scope.hasStartPadding = function () {
-      return $scope.current > $scope.min + ($scope.offset + 1);
+      return $scope.repeatStart > $scope.min + 1;
     };
     $scope.hasEndPadding = function () {
-      return $scope.current < $scope.max - ($scope.offset + 1);
+      return $scope.repeatStart + $scope.repeat - 1 < $scope.max - 1;
     };
 
     $scope.$watchGroup(['min', 'max', 'offset'], function () {
