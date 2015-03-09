@@ -22,8 +22,10 @@ module.exports = [
     };
 
     // Incremental search
-    $scope.$watch('query', function (query) {
-      $state.go('search.results', {q: query, p: null});
+    $scope.$watch('query', function (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        $state.go('search.results', {q: newValue, p: null});
+      }
     });
 
     // Sync input value with query param
