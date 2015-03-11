@@ -1,40 +1,39 @@
 <!doctype html>
 <html lang="en" ng-app="bowerBrowser">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="urf-8">
     <title>bower-browser</title>
     <link rel="stylesheet" href="/assets/styles/app.css">
   </head>
   <body>
-    <div class="container main">
-      <div class="row">
-        <div class="col-md-3 navigation">
-          <div class="app-title">bower-browser</div>
-          <ul class="nav nav-pills nav-stacked">
-            <li ui-sref-active="active">
-              <a ui-sref="home"><span class="glyphicon glyphicon-home"></span> My project</a>
-            </li>
-            <li ui-sref-active="active">
-              <a ui-sref="search.results"><span class="glyphicon glyphicon-search"></span> Packages</a>
-            </li>
-            <li ui-sref-active="active">
-              <a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Settings</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-9 content">
-          <div ui-view autoscroll></div>
-        </div>
-      </div>
-      <hr>
-      <div class="footer">
-        <ul class="list-inline">
-          <li><a href="http://bower.io/">Bower</a></li>
-          <li>&middot;</li>
-          <li><a href="http://bower.io/search/">Official Bower search</a></li>
-          <li>&middot;</li>
-          <li><a href="https://github.com/rakuten-frontend/bower-browser">bower-browser project</a></li>
+    <div class="layout">
+      <div class="navigation">
+        <div class="app-title">bower-browser</div>
+        <ul class="menu">
+          <li ui-sref-active="active">
+            <a ui-sref="home"><span class="glyphicon glyphicon-home"></span> My project</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="search.results"><span class="glyphicon glyphicon-search"></span> Packages</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+          </li>
         </ul>
+        <ul class="menu menu-condensed menu-bottom">
+          <li>
+            <a href="http://bower.io/"><span class="glyphicon glyphicon-chevron-right"></span> Bower</a>
+          </li>
+          <li>
+            <a href="http://bower.io/search/"><span class="glyphicon glyphicon-chevron-right"></span> Official Bower search</a>
+          </li>
+          <li>
+            <a href="https://github.com/rakuten-frontend/bower-browser"><span class="glyphicon glyphicon-info-sign"></span> bower-browser project</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div ui-view autoscroll></div>
       </div>
     </div>
     <app-console></app-console>

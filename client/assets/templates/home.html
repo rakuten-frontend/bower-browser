@@ -1,5 +1,5 @@
 <div ng-if="bower.loaded">
-  <h1 class="project-title">{{bower.json.name || bower.name}} <small>{{bower.json.version}}</small></h1>
+  <h1 class="page-title">{{bower.json.name || bower.name}} <small>{{bower.json.version}}</small></h1>
   <div>{{bower.path}} <a class="btn btn-link btn-xs reload" title="Reload bower.json" ng-click="bower.load()"><span class="glyphicon glyphicon-repeat"></span></a></div>
   <hr>
   <div ng-if="bower.loaded && !bower.error">
