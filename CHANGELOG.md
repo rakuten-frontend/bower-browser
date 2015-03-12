@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 (2015-03-12)
+- Show keywords in search results. ([#6](https://github.com/rakuten-frontend/bower-browser/issues/6))
+- Support `<field>:<query>` notation for search, e.g. `owner:twbs`, `keyword:responsive`.
+- Notify update if available.
+- [fix] Correct number of results per page.
+- [fix] Prevent resetting page number when reloading.
+
 ## 0.4.2 (2015-03-09)
 - Fix pagination bug.
 
