@@ -115,7 +115,7 @@ module.exports = [
         this.count = matchedItems.length;
         this.pageCount = Math.ceil(this.count / this.limit);
         this.from = (this.page - 1) * this.limit + 1;
-        this.to =  this.from + this.limit > this.count ? this.count : this.from + this.limit;
+        this.to =  this.from + this.limit -1 > this.count ? this.count : this.from + this.limit - 1;
         this.results = matchedItems.slice(this.from - 1, this.to);
       },
 
