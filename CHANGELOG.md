@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 (2015-03-15)
+- Support Node.js 0.12 and io.js.
+- Show correct packages by improving dedupe function. (see: [bower/search #64](https://github.com/bower/search/pull/64))
+
 ## 0.5.0 (2015-03-12)
 - Show keywords in search results. ([#6](https://github.com/rakuten-frontend/bower-browser/issues/6))
 - Support `<field>:<query>` notation for search, e.g. `owner:twbs`, `keyword:responsive`.
@@ -11,7 +15,7 @@
 - Fix pagination bug.
 
 ## 0.4.1 (2015-03-06)
-- Tweak search.
+- Tweak search for compatibility with Bower official search.
 
 ## 0.4.0 (2015-03-05)
 - Add "Settings" feature. ([#4](https://github.com/rakuten-frontend/bower-browser/issues/4))
