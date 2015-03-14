@@ -153,9 +153,24 @@ module.exports = [
         if (!config.ignoreDeprecatedPackages) {
           return items;
         }
-        return _.uniq(items.reverse(), function (item) {
+        var groupedResults = _.groupBy(items.reverse(), function (item) {
           return item.website;
         });
+        var list = [];
+        _.forEach(groupedResults, function (group) {
+          var matchedItem;
+          if (group.length > 1) {
+            var repoName = group[0].website.split('/').pop();
+            matchedItem = _.find(group, function (item) {
+              return item.name === repoName;
+            });
+          }
+          if (!matchedItem) {
+            matchedItem = group[0];
+          }
+          list.push(matchedItem);
+        });
+        return list;
       },
 
       // Find items by query
