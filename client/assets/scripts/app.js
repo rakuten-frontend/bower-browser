@@ -26,4 +26,5 @@ angular
   .directive('appPopover', require('./directives/popover'))
   .directive('appFocus', require('./directives/focus'))
   .directive('appScroll', require('./directives/scroll'))
+  .directive('appNewTab', require('./directives/new-tab'))
   .filter('fromNow', require('./filters/from-now'));

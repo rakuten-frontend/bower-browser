@@ -23,8 +23,8 @@
     <div class="row">
       <div class="col-sm-8">
         <h3>
-          <a class="pointer" ng-href="{{component.website}}" target="{{config.newTab ? '_blank' : ''}}">{{component.name}}</a>
-          <small>by <a href="https://github.com/{{component.owner}}" target="{{config.newTab ? '_blank' : ''}}">{{component.owner}}</a></small>
+          <a class="pointer" ng-href="{{component.website}}" app-new-tab="config.newTab">{{component.name}}</a>
+          <small>by <a href="https://github.com/{{component.owner}}" app-new-tab="config.newTab">{{component.owner}}</a></small>
         </h3>
         <p>{{component.description}}</p>
         <div>
