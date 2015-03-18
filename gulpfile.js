@@ -131,6 +131,16 @@ gulp.task('html', function () {
     .pipe(gulp.dest(paths.dest));
 });
 
+gulp.task('extras', function () {
+  return gulp.src([
+      'favicon.ico',
+      'apple-touch-icon.png'
+    ], {
+      cwd: paths.src
+    })
+    .pipe(gulp.dest(paths.dest));
+});
+
 gulp.task('nodemon', function () {
   return $.nodemon({
     script: paths.test + '/server.js',
@@ -160,10 +170,10 @@ gulp.task('watch', function () {
 gulp.task('serve', ['clean'], function (callback) {
   options.env = 'development';
   $.livereload.listen();
-  runSequence(['scripts:watch', 'styles', 'fonts', 'html'], 'nodemon', 'watch', callback);
+  runSequence(['scripts:watch', 'styles', 'fonts', 'html', 'extras'], 'nodemon', 'watch', callback);
 });
 
-gulp.task('build', ['scripts', 'styles', 'fonts', 'html']);
+gulp.task('build', ['scripts', 'styles', 'fonts', 'html', 'extras']);
 
 gulp.task('test', ['clean'], function (callback) {
   runSequence('lint', 'build', 'mocha', callback);
