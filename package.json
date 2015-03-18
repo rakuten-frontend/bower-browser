@@ -61,7 +61,7 @@
     "win-spawn": "^2.0.0"
   },
   "devDependencies": {
-    "angular": "~1.3.15",
+    "angular": "~1.3.13",
     "angular-scroll": "^0.6.4",
     "angular-ui-router": "^0.2.13",
     "bootstrap-sass": "~3.3.3",
@@ -102,10 +102,12 @@
     ]
   },
   "browser": {
+    "angular": "./node_modules/angular/angular.js",
     "angular-scroll": "./node_modules/angular-scroll/angular-scroll.js"
   },
   "browserify-shim": {
     "angular": {
+      "exports": "angular",
       "depends": [
         "jquery:jQuery"
       ]
