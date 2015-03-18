@@ -7,31 +7,7 @@
   </head>
   <body>
     <div class="layout">
-      <div class="navigation">
-        <div class="app-title">bower-browser</div>
-        <ul class="menu">
-          <li ui-sref-active="active">
-            <a ui-sref="home"><span class="glyphicon glyphicon-home"></span> My project</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="search.results"><span class="glyphicon glyphicon-search"></span> Packages</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Settings</a>
-          </li>
-        </ul>
-        <ul class="menu menu-condensed menu-bottom">
-          <li>
-            <a href="http://bower.io/"><span class="glyphicon glyphicon-chevron-right"></span> Bower</a>
-          </li>
-          <li>
-            <a href="http://bower.io/search/"><span class="glyphicon glyphicon-chevron-right"></span> Official Bower search</a>
-          </li>
-          <li>
-            <a href="https://github.com/rakuten-frontend/bower-browser"><span class="glyphicon glyphicon-info-sign"></span> bower-browser project</a>
-          </li>
-        </ul>
-      </div>
+      <app-navigation></app-navigation>
       <div class="content">
         <div ui-view autoscroll></div>
       </div>
