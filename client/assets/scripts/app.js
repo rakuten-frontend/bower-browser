@@ -25,6 +25,7 @@ angular
   .directive('appNavigation', require('./directives/navigation'))
   .directive('appConsole', require('./directives/console'))
   .directive('appPagination', require('./directives/pagination'))
+  .directive('appTooltip', require('./directives/tooltip'))
   .directive('appPopover', require('./directives/popover'))
   .directive('appFocus', require('./directives/focus'))
   .directive('appScroll', require('./directives/scroll'))
