@@ -22,6 +22,7 @@ $border-radius-base: 0;
 $border-radius-large: 0;
 $border-radius-small: 0;
 $btn-default-bg: #eee;
+$input-bg-disabled: #fff;
 $input-border-focus: darken($bower-gold, 10%);
 $dropdown-link-hover-color: #fff;
 $dropdown-link-hover-bg: $bower-red;
@@ -209,10 +210,14 @@ body {
   }
   .icon {
     position: absolute;
-    top: 50%;
-    left: 10px;
-    margin-top: -8px;
+    top: 0;
+    left: 0;
+    width: $input-height-base;
+    height: $input-height-base;
+    line-height: $input-height-base;
+    text-align: center;
     opacity: 0.7;
+    pointer-events: none;
   }
 }
 
@@ -265,28 +270,54 @@ body {
     margin-top: 1px;
     margin-right: 0.2em;
   }
-  .action {
-    $button-width: 90px;
-    $dropdown-width: 18px;
-    float: right;
-    max-width: 300px;
-    .btn-single,
-    .btn-multiple {
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-    .btn-single {
-      min-width: $button-width;
-    }
-    .btn-multiple {
-      min-width: $button-width - $dropdown-width + 1;
-    }
-    .dropdown-toggle {
-      width: $dropdown-width;
-      padding-left: 0;
-      padding-right: 0;
+}
+
+.result-action {
+  $button-width: 90px;
+  $dropdown-width: 18px;
+  float: right;
+  min-width: 270px;
+  max-width: 320px;
+  &.dependency {
+    .form-control {
+      padding-right: 100px;
     }
   }
+  &.dev-dependency {
+    .form-control {
+      padding-right: 120px;
+    }
+  }
+  .form-control {
+    text-overflow: ellipsis;
+  }
+  .form-control-feedback {
+    right: 10px;
+    width: auto;
+    font-size: $font-size-small;
+    color: $bower-green;
+  }
+  .btn-single,
+  .btn-multiple {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .btn-single {
+    min-width: $button-width;
+  }
+  .btn-multiple {
+    min-width: $button-width - $dropdown-width + 1;
+  }
+  .btn.dropdown-toggle {
+    width: $dropdown-width;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.input-group-inner {
+  display: table-cell;
+  position: relative;
 }
 
 // Settings
