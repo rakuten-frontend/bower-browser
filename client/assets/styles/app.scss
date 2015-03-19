@@ -1,8 +1,7 @@
 @import url("//fonts.googleapis.com/css?family=Open+Sans:600,400");
 
-$navi-width: 240px;
-$console-height: 320px;
-
+// Bower brand colors
+// http://bower.io/docs/about/#colors
 $bower-dark-brown: #543729;
 $bower-red: #ef5734;
 $bower-gold: #ffcc2f;
@@ -10,6 +9,7 @@ $bower-green: #2baf2b;
 $bower-blue: #00acee;
 $bower-light-gray: #cecece;
 
+// Bootstrap config
 $brand-primary: $bower-red;
 $body-bg: #fcfcfc;
 $link-color: darken(#428bca, 6.5%);
@@ -41,6 +41,11 @@ $popover-fallback-border-color: darken($bower-gold, 10%);
 $close-text-shadow: none;
 
 @import "bootstrap-sass/assets/stylesheets/_bootstrap";
+
+// Application variables
+$navi-width: 220px;
+$content-max-width: $container-large-desktop - $navi-width;
+$console-height: 320px;
 
 // Override and extend Bootstrap styles
 input[type="search"]::-webkit-search-cancel-button {
@@ -122,6 +127,8 @@ body {
 }
 
 .content {
+  max-width: $content-max-width;
+  margin: 0 auto;
   padding: 30px;
 }
 
@@ -154,6 +161,7 @@ body {
     background-color: $bower-red;
   }
 }
+
 .menu-condensed {
   font-size: $font-size-small;
   > li > a {
@@ -161,6 +169,7 @@ body {
     padding-bottom: 4px;
   }
 }
+
 .menu-bottom {
   position: absolute;
   left: 0;
@@ -283,7 +292,6 @@ body {
   $dropdown-width: 18px;
   float: right;
   min-width: 270px;
-  max-width: 320px;
   &.dependency {
     .form-control {
       padding-right: 100px;
@@ -376,16 +384,19 @@ body {
     }
   }
 }
+
 .console-wrapper {
   overflow-y: scroll;
   height: $console-height;
   margin-right: -100px;
   padding-right: 100px;
 }
+
 .console-container {
   padding-left: 30px;
   padding-right: 30px;
 }
+
 .console-opener {
   position: fixed;
   right: 15px;
