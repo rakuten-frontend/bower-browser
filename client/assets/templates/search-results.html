@@ -21,7 +21,7 @@
 <div class="results">
   <div class="result" ng-repeat="component in service.results" ng-switch on="bower.isInstalled(component.name)">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-8">
         <h3>
           <a class="pointer" ng-href="{{component.website}}" app-new-tab="config.newTab">{{component.name}}</a>
           <small>by <a href="https://github.com/{{component.owner}}" app-new-tab="config.newTab">{{component.owner}}</a></small>
@@ -39,7 +39,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-sm-4 text-right">
+      <div class="col-xs-4 text-right">
         <div class="input-group result-action" ng-switch-when="false">
           <input type="text" class="form-control" placeholder="Latest version" ng-model="component.version" ng-init="component.version=config.defaultInstallVersion">
           <div class="input-group-btn">

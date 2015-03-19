@@ -8,6 +8,7 @@ module.exports = [
     return {
       restrict: 'EA',
       replace: true,
+      scope: true,
       controller: 'NavigationController',
       template: fs.readFileSync(__dirname + '/../../templates/navigation.html', 'utf8')
     };

@@ -1,4 +1,8 @@
-<div class="navigation">
+<div class="navigation" ng-class="{open: shown}">
+  <a class="toggle-button" ng-click="show()">
+    <span class="glyphicon glyphicon-menu-hamburger"></span>
+  </a>
+  <a ng-click="hide()" class="close">&times;</a>
   <div class="app-title">bower-browser</div>
   <ul class="menu">
     <li ui-sref-active="active">

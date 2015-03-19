@@ -44,8 +44,11 @@ $close-text-shadow: none;
 
 // Application variables
 $navi-width: 220px;
+$content-min-width: $container-tablet;
 $content-max-width: $container-large-desktop - $navi-width;
 $console-height: 320px;
+$toggle-button-size: 24px;
+
 
 // Override and extend Bootstrap styles
 input[type="search"]::-webkit-search-cancel-button {
@@ -70,8 +73,12 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .close {
+  opacity: 0.3;
   transition-property: opacity;
   transition-duration: 0.1s;
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 .table {
@@ -106,6 +113,33 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+// Components
+.toggle-button {
+  display: block;
+  width: $toggle-button-size;
+  height: $toggle-button-size;
+  line-height: $toggle-button-size;
+  border: 1px solid darken($bower-gold, 10%);
+  text-align: center;
+  background-color: $bower-gold;
+  cursor: pointer;
+  transform: translate(0, 0);
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-delay: 0.3s;
+  .open & {
+    transition-delay: 0s;
+  }
+  .glyphicon {
+    color: lighten($bower-dark-brown, 20%);
+    transition-property: color;
+    transition-duration: 0.1s;
+  }
+  &:hover .glyphicon {
+    color: $bower-dark-brown;
+  }
+}
+
 // Layout
 html,
 body {
@@ -114,25 +148,66 @@ body {
 
 .layout {
   padding-left: $navi-width;
+  @media (max-width: $screen-sm-max) {
+    padding-left: 0;
+  }
 }
 
 .navigation {
   position: fixed;
   top: 0;
-  left: 0;
+  left: $navi-width;
   bottom: 0;
+  z-index: 10;
   width: $navi-width;
+  margin-left: - $navi-width;
   color: $bower-dark-brown;
   background-color: $bower-gold;
+  transition-property: left;
+  transition-duration: 0.3s;
+  @media (max-width: $screen-sm-max) {
+    left: 0;
+    &.open {
+      left: $navi-width;
+      box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
 
 .content {
+  min-width: $content-min-width;
   max-width: $content-max-width;
   margin: 0 auto;
-  padding: 30px;
+  padding: 30px $grid-gutter-width;
 }
 
 // Navigation
+.navigation {
+  .toggle-button,
+  .close {
+    display: none;
+  }
+}
+@media (max-width: $screen-sm-max) {
+  .navigation {
+    .toggle-button {
+      display: block;
+      position: fixed;
+      top: 3px;
+      left: 3px;
+    }
+    &.open .toggle-button {
+      transform: translate(- ($toggle-button-size + 6px), 0);
+    }
+    .close {
+      display: block;
+      position: absolute;
+      top: 5px;
+      right: 8px;
+    }
+  }
+}
+
 .app-title {
   padding: 25px 20px;
   font-size: 20px;
@@ -160,6 +235,9 @@ body {
     color: #fff;
     background-color: $bower-red;
   }
+  .glyphicon {
+    margin-right: 6px;
+  }
 }
 
 .menu-condensed {
@@ -175,10 +253,6 @@ body {
   left: 0;
   right: 0;
   bottom: 40px;
-}
-
-.navigation .glyphicon {
-  margin-right: 6px;
 }
 
 // Content
@@ -354,6 +428,31 @@ body {
 }
 
 // Console panel
+.console {
+  pre {
+    color: inherit;
+  }
+  .toggle-button {
+    position: fixed;
+    right: 3px;
+    bottom: 3px;
+    z-index: $zindex-navbar-fixed - 1;
+  }
+  &.open .toggle-button {
+    transform: translate(0, $toggle-button-size + 6px);
+  }
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: lighten($bower-dark-brown, 50%);
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
 .console-panel {
   position: fixed;
   left: 0;
@@ -366,22 +465,9 @@ body {
   transform: translate(0, 100%);
   transition-property: box-shadow, transform;
   transition-duration: 0.3s;
-  pre {
-    color: inherit;
-  }
-  .console.open & {
+  .open & {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     transform: translate(0, 0);
-  }
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: lighten($bower-dark-brown, 50%);
-    opacity: 0.7;
-    &:hover {
-      opacity: 1;
-    }
   }
 }
 
@@ -393,23 +479,8 @@ body {
 }
 
 .console-container {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.console-opener {
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  z-index: $zindex-navbar-fixed - 1;
-  transform: translate(0, 0);
-  transition-property: transform;
-  transition-duration: 0.3s;
-  transition-delay: 0.3s;
-  .console.open & {
-    transform: translate(0, 50px);
-    transition-delay: 0s;
-  }
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
 }
 
 .log {
