@@ -51,6 +51,7 @@ $popover-bg: $bower-gold;
 $popover-border-color: $bower-gold;
 $popover-fallback-border-color: darken($bower-gold, 10%);
 $close-text-shadow: none;
+$headings-small-color: #897266;
 
 @import "bootstrap-sass/assets/stylesheets/_bootstrap";
 
@@ -265,6 +266,9 @@ body {
   margin-top: -5px;
   margin-bottom: 20px;
   color: $bower-green;
+  small {
+    color: lighten($bower-green, 15%);
+  }
 }
 
 .message {
