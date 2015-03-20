@@ -1,6 +1,6 @@
 # bower-browser
 
-> Browser-based GUI manager of Bower.
+> GUI Bower manager runs on web browser
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
@@ -11,9 +11,10 @@
 ## Features
 * Search from Bower registry
 * Install packages with various options
-* Realtime log
-* Display bower.json data
-* Update or uninstall local Bower components
+* Monitor log in realtime
+* Manage local Bower components
+
+![Features](resources/features.png)
 
 ## Installation
 bower-browser executes `bower` in background.  
@@ -60,6 +61,8 @@ Manage your Bower components in the web GUI! :-)
 ## Integration with Build Systems
 
 ### Gulp
+Use `bower-browser` module directly.
+
 ```javascript
 var bowerBrowser = require('bower-browser');
 

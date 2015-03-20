@@ -1,7 +1,7 @@
 {
   "name": "bower-browser",
   "version": "0.5.1",
-  "description": "Browser-based GUI manager of Bower",
+  "description": "GUI Bower manager runs on web browser",
   "author": {
     "name": "Rakuten, Inc."
   },
