@@ -9,7 +9,7 @@
 ![bower-browser](resources/screenshot.png)
 
 ## Features
-* Search from Bower registry
+* Search from the Bower registry
 * Install packages with various options
 * Monitor log in realtime
 * Manage local Bower components
@@ -17,15 +17,22 @@
 ![Features](resources/features.png)
 
 ## Installation
-bower-browser executes `bower` in background.  
-Make sure to install [Bower](http://bower.io/) if you haven't: `$ npm install -g bower`
+Install via npm.
 
 ```shell
 $ npm install -g bower-browser
 ```
 
-Install with `-g` option for command line use, `--save` or `--save-dev` for accessing [module API](#api).  
+Install with `-g` option for command line interface, `--save` or `--save-dev` for using [module API](#api).  
 [Grunt plugin](https://github.com/rakuten-frontend/grunt-bower-browser) is also available.
+
+### Requirements
+* [Node.js](https://nodejs.org/) or [io.js](https://iojs.org/)
+* [Bower](http://bower.io/) and [Git](http://git-scm.com/)
+* Modern web browser (IE10+ supported)
+
+bower-browser executes `bower` in background.  
+Make sure to install Bower if you haven't: `$ npm install -g bower`
 
 ## Usage
 ```shell
