@@ -208,7 +208,7 @@ body {
     .close {
       display: block;
       position: absolute;
-      top: 9px;
+      top: 8px;
       right: 12px;
     }
   }
@@ -373,10 +373,6 @@ body {
   .list-inline {
     margin-bottom: 3px;
   }
-  .glyphicon-star {
-    margin-top: 1px;
-    margin-right: 0.2em;
-  }
 }
 
 .result-action {
@@ -480,7 +476,7 @@ body {
   }
   .close {
     position: absolute;
-    top: 9px;
+    top: 10px;
     right: 12px;
     color: $color;
     opacity: 0.7;
