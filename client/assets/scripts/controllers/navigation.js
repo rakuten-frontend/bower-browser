@@ -2,8 +2,9 @@
 
 module.exports = [
   '$scope',
+  '$rootScope',
   'SettingsService',
-  function ($scope, SettingsService) {
+  function ($scope, $rootScope, SettingsService) {
 
     // Properties
     $scope.config = SettingsService.config;
@@ -18,6 +19,10 @@ module.exports = [
     $scope.hide = function () {
       $scope.shown = false;
     };
+
+    $rootScope.$on('$stateChangeStart', function () {
+      $scope.hide();
+    });
 
   }
 ];

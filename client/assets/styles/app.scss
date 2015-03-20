@@ -10,6 +10,7 @@ $bower-blue: #00acee;
 $bower-light-gray: #cecece;
 
 // Bootstrap config
+$gray-dark: $bower-dark-brown;
 $brand-primary: $bower-red;
 $body-bg: #fcfcfc;
 $link-color: darken(#428bca, 6.5%);
@@ -36,8 +37,9 @@ $input-border-focus: darken($bower-gold, 10%);
 $dropdown-link-hover-color: #fff;
 $dropdown-link-hover-bg: $bower-red;
 $tooltip-bg: $bower-dark-brown;
+$tooltip-opacity: 1;
 $popover-bg: $bower-gold;
-$popover-border-color: darken($bower-gold, 10%);
+$popover-border-color: $bower-gold;
 $popover-fallback-border-color: darken($bower-gold, 10%);
 $close-text-shadow: none;
 
@@ -48,7 +50,7 @@ $navi-width: 220px;
 $content-min-width: $container-tablet;
 $content-max-width: $container-large-desktop - $navi-width;
 $console-height: 320px;
-$toggle-button-size: 24px;
+$toggle-button-size: 30px;
 
 
 // Override and extend Bootstrap styles
@@ -75,8 +77,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .close {
   opacity: 0.3;
-  transition-property: opacity;
-  transition-duration: 0.1s;
   &:hover {
     opacity: 0.6;
   }
@@ -120,7 +120,7 @@ input[type="search"]::-webkit-search-cancel-button {
   width: $toggle-button-size;
   height: $toggle-button-size;
   line-height: $toggle-button-size;
-  border: 1px solid darken($bower-gold, 10%);
+  border-radius: 50%;
   text-align: center;
   background-color: $bower-gold;
   cursor: pointer;
@@ -162,7 +162,6 @@ body {
   z-index: 10;
   width: $navi-width;
   margin-left: - $navi-width;
-  color: $bower-dark-brown;
   background-color: $bower-gold;
   transition-property: left;
   transition-duration: 0.3s;
@@ -194,17 +193,17 @@ body {
     .toggle-button {
       display: block;
       position: fixed;
-      top: 3px;
-      left: 3px;
+      top: 8px;
+      left: 8px;
     }
     &.open .toggle-button {
-      transform: translate(- ($toggle-button-size + 6px), 0);
+      transform: translate(- ($toggle-button-size + 10px), 0);
     }
     .close {
       display: block;
       position: absolute;
-      top: 5px;
-      right: 8px;
+      top: 9px;
+      right: 12px;
     }
   }
 }
@@ -258,7 +257,7 @@ body {
 
 // Content
 .page-title {
-  margin-top: -8px;
+  margin-top: -5px;
   margin-bottom: 20px;
   color: $bower-green;
 }
@@ -435,17 +434,17 @@ body {
   }
   .toggle-button {
     position: fixed;
-    right: 3px;
-    bottom: 3px;
+    right: 8px;
+    bottom: 8px;
     z-index: $zindex-navbar-fixed - 1;
   }
   &.open .toggle-button {
-    transform: translate(0, $toggle-button-size + 6px);
+    transform: translate(0, $toggle-button-size + 10px);
   }
   .close {
     position: absolute;
-    top: 5px;
-    right: 8px;
+    top: 9px;
+    right: 12px;
     color: lighten($bower-dark-brown, 50%);
     opacity: 0.7;
     &:hover {
