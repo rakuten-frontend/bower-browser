@@ -11,9 +11,11 @@ $bower-light-gray: #cecece;
 
 // Bootstrap config
 $gray-dark: $bower-dark-brown;
+$gray-light: #b2a49d;
 $brand-primary: $bower-red;
 $body-bg: #fcfcfc;
-$link-color: darken(#428bca, 6.5%);
+$link-color: darken($bower-blue, 5%);
+$link-hover-color: darken($link-color, 10%);
 $font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-size-base: 13px;
 $font-size-small: 12px;
@@ -31,11 +33,18 @@ $padding-xs-horizontal: 5px;
 $border-radius-base: 0;
 $border-radius-large: 0;
 $border-radius-small: 0;
-$btn-default-bg: #eee;
+$btn-default-color: $bower-dark-brown;
+$btn-default-bg: #eaeaea;
 $input-bg-disabled: #fff;
+$input-color: $bower-dark-brown;
 $input-border-focus: darken($bower-gold, 10%);
+$input-color-placeholder: $gray-light;
+$cursor-disabled: default;
 $dropdown-link-hover-color: #fff;
 $dropdown-link-hover-bg: $bower-red;
+$pagination-color: $bower-dark-brown;
+$pagination-hover-color: $pagination-color;
+$tooltip-color: #f5e7e0;
 $tooltip-bg: $bower-dark-brown;
 $tooltip-opacity: 1;
 $popover-bg: $bower-gold;
@@ -51,7 +60,6 @@ $content-min-width: $container-tablet;
 $content-max-width: $container-large-desktop - $navi-width;
 $console-height: 320px;
 $toggle-button-size: 30px;
-
 
 // Override and extend Bootstrap styles
 input[type="search"]::-webkit-search-cancel-button {
@@ -71,6 +79,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .btn {
+  border-radius: 2px;
   transition-property: background-color;
   transition-duration: 0.1s;
 }
@@ -93,14 +102,10 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .pagination {
-  > .disabled {
-    > span,
-    > span:hover,
-    > span:focus,
+  > li {
     > a,
-    > a:hover,
-    > a:focus {
-      cursor: default;
+    > span {
+      margin-left: 3px;
     }
   }
 }
@@ -288,6 +293,9 @@ body {
 .home-action {
   margin-top: 35px;
   margin-bottom: 35px;
+  .btn {
+    margin-right: 5px;
+  }
 }
 
 // Search
@@ -342,18 +350,24 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid $hr-border;
-  h3 {
-    margin-top: 0;
+  .title {
+    margin-top: 2px;
+    font-size: 22px;
   }
-  ul {
-    margin-bottom: 0;
+  .description {
+    font-size: 14px;
+  }
+  .misc {
+    font-size: $font-size-small;
+    a {
+      color: $gray-light;
+      &:hover {
+        color: darken($gray-light, 15%);
+      }
+    }
   }
   .list-inline {
     margin-bottom: 3px;
-    font-size: $font-size-small;
-  }
-  .text-muted {
-    color: #999;
   }
   .glyphicon-star {
     margin-top: 1px;
@@ -365,15 +379,15 @@ body {
   $button-width: 90px;
   $dropdown-width: 18px;
   float: right;
-  min-width: 270px;
+  min-width: 260px;
   &.dependency {
     .form-control {
-      padding-right: 100px;
+      padding-right: 90px;
     }
   }
   &.dev-dependency {
     .form-control {
-      padding-right: 120px;
+      padding-right: 110px;
     }
   }
   .form-control {
@@ -383,7 +397,7 @@ body {
   .form-control-feedback {
     right: 10px;
     width: auto;
-    font-size: $font-size-small;
+    font-size: 11px;
     color: $bower-green;
   }
   .btn {
@@ -429,9 +443,6 @@ body {
 
 // Console panel
 .console {
-  pre {
-    color: inherit;
-  }
   .toggle-button {
     position: fixed;
     right: 8px;
@@ -441,33 +452,37 @@ body {
   &.open .toggle-button {
     transform: translate(0, $toggle-button-size + 10px);
   }
-  .close {
-    position: absolute;
-    top: 9px;
-    right: 12px;
-    color: lighten($bower-dark-brown, 50%);
-    opacity: 0.7;
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
 
 .console-panel {
+  $color: #cfbdb5;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: $zindex-navbar-fixed;
   overflow: hidden;
-  color: lighten($bower-dark-brown, 50%);
-  background-color: rgba(darken($bower-dark-brown, 15%), 0.9);
+  color: $color;
+  background-color: rgba(darken($bower-dark-brown, 12%), 0.9);
   transform: translate(0, 100%);
   transition-property: box-shadow, transform;
   transition-duration: 0.3s;
   .open & {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     transform: translate(0, 0);
+  }
+  pre {
+    color: inherit;
+  }
+  .close {
+    position: absolute;
+    top: 9px;
+    right: 12px;
+    color: $color;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

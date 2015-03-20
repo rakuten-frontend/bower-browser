@@ -22,18 +22,18 @@
   <div class="result" ng-repeat="component in service.results" ng-switch on="bower.isInstalled(component.name)">
     <div class="row">
       <div class="col-xs-8">
-        <h3>
+        <h3 class="title">
           <a class="pointer" ng-href="{{component.website}}" app-new-tab="config.newTab">{{component.name}}</a>
           <small>by <a href="https://github.com/{{component.owner}}" app-new-tab="config.newTab">{{component.owner}}</a></small>
         </h3>
-        <p>{{component.description}}</p>
-        <div>
+        <p class="description">{{component.description}}</p>
+        <div class="misc">
           <ul class="list-inline" ng-if="component.keywords">
             <li ng-repeat="keyword in component.keywords track by $index">
               <a ui-sref="search.results({q: 'keyword:' + keyword, p: null})">{{keyword}}</a>
             </li>
           </ul>
-          <ul class="list-inline text-muted">
+          <ul class="list-inline">
             <li><span class="glyphicon glyphicon-star"></span>{{component.stars | number}}</li>
             <li>Updated {{component.updated | fromNow}}</li>
           </ul>
