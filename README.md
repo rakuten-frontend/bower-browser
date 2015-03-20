@@ -6,6 +6,8 @@
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][deps-image]][deps-url]
 
+**NOTE: The new design is currently under develoment. We will release it next week.**
+
 ![bower-browser](resources/screenshot.png)
 
 ## Features
