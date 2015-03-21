@@ -91,7 +91,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .close {
   opacity: 0.3;
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.6;
   }
 }
@@ -146,8 +147,11 @@ input[type="search"]::-webkit-search-cancel-button {
     transition-property: color;
     transition-duration: 0.1s;
   }
-  &:hover .glyphicon {
-    color: $bower-dark-brown;
+  &:hover,
+  &:focus {
+    .glyphicon {
+      color: $bower-dark-brown;
+    }
   }
 }
 
@@ -237,7 +241,8 @@ body {
     color: lighten($bower-dark-brown, 15%);
     transition-property: color, background-color;
     transition-duration: 0.1s;
-    &:hover {
+    &:hover,
+    &:focus {
       color: $bower-dark-brown;
     }
   }
@@ -369,7 +374,8 @@ body {
     font-size: $font-size-small;
     a {
       color: $gray-light;
-      &:hover {
+      &:hover,
+      &:focus {
         color: darken($gray-light, 15%);
       }
     }
@@ -484,7 +490,8 @@ body {
     right: 12px;
     color: $color;
     opacity: 0.7;
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }
