@@ -85,6 +85,10 @@ input[type="search"]::-webkit-search-cancel-button {
   transition-duration: 0.1s;
 }
 
+.btn-default {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
 .close {
   opacity: 0.3;
   &:hover {
@@ -138,7 +142,7 @@ input[type="search"]::-webkit-search-cancel-button {
     transition-delay: 0s;
   }
   .glyphicon {
-    color: lighten($bower-dark-brown, 20%);
+    color: lighten($bower-dark-brown, 15%);
     transition-property: color;
     transition-duration: 0.1s;
   }
@@ -230,7 +234,7 @@ body {
     display: block;
     padding: 8px 20px;
     text-decoration: none;
-    color: lighten($bower-dark-brown, 20%);
+    color: lighten($bower-dark-brown, 15%);
     transition-property: color, background-color;
     transition-duration: 0.1s;
     &:hover {
