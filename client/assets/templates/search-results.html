@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-8">
-    <div class="count" ng-show="service.loaded">
+    <div class="count" ng-if="service.loaded">
       <strong><span ng-hide="service.page === 1">{{service.from | number}}-{{service.to | number}} of </span>{{service.count | number}} results</strong>
     </div>
   </div>
@@ -18,24 +18,24 @@
     </div>
   </div>
 </div>
-<div class="results">
+<div class="results" ng-if="service.loaded">
   <div class="result" ng-repeat="component in service.results" ng-switch on="bower.isInstalled(component.name)">
     <div class="row">
       <div class="col-xs-8">
         <h3 class="title">
-          <a class="pointer" ng-href="{{component.website}}" app-new-tab="config.newTab">{{component.name}}</a>
-          <small>by <a href="https://github.com/{{component.owner}}" app-new-tab="config.newTab">{{component.owner}}</a></small>
+          <a class="pointer" ng-href="{{::component.website}}" app-new-tab="config.newTab">{{::component.name}}</a>
+          <small>by <a href="https://github.com/{{::component.owner}}" app-new-tab="config.newTab">{{::component.owner}}</a></small>
         </h3>
-        <p class="description">{{component.description}}</p>
+        <p class="description">{{::component.description}}</p>
         <div class="misc">
           <ul class="list-inline" ng-if="component.keywords">
             <li ng-repeat="keyword in component.keywords track by $index">
-              <a ui-sref="search.results({q: 'keyword:' + keyword, p: null})">{{keyword}}</a>
+              <a ui-sref="search.results({q: 'keyword:' + keyword, p: null})">{{::keyword}}</a>
             </li>
           </ul>
           <ul class="list-inline">
-            <li><span class="glyphicon glyphicon-star"></span> {{component.stars | number}}</li>
-            <li>Updated {{component.updated | fromNow}}</li>
+            <li><span class="glyphicon glyphicon-star"></span> {{::component.stars | number}}</li>
+            <li>Updated {{::component.updated | fromNow}}</li>
           </ul>
         </div>
       </div>
@@ -86,6 +86,6 @@
     Please restart bower-browser with <code>--cache 0</code> option.
   </p>
 </div>
-<div class="text-center" ng-show="service.loaded && service.count > 0">
+<div class="text-center" ng-if="service.loaded && service.count > 0">
   <app-pagination max="service.pageCount" current="service.page" offset="2"></app-pagination>
 </div>
