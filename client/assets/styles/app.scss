@@ -35,7 +35,7 @@ $border-radius-large: 0;
 $border-radius-small: 0;
 $btn-default-color: $bower-dark-brown;
 $btn-default-bg: #eaeaea;
-$input-bg-disabled: #fff;
+$input-bg-disabled: #f0f0f0;
 $input-color: $bower-dark-brown;
 $input-border-focus: darken($bower-gold, 10%);
 $input-color-placeholder: $gray-light;
@@ -72,6 +72,9 @@ input[type="search"]::-webkit-search-cancel-button {
   &:focus {
     border-color: darken($input-border-focus, 5%);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 2px rgba($input-border-focus, 0.6);
+  }
+  &[readonly] {
+    background-color: #fff;
   }
 }
 
