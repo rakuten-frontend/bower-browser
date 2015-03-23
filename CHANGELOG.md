@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 (2015-03-23)
+- Renew the design. ([#8](https://github.com/rakuten-frontend/bower-browser/issues/8))
+- Improve performance of search page.
+- [fix] Open project links in new tab if configured.
+- [fix] Prevent 404 error of settings.json.
+
 ## 0.5.1 (2015-03-15)
 - Support Node.js 0.12 and io.js.
 - Show correct packages by improving dedupe function. (see: [bower/search #64](https://github.com/bower/search/pull/64))
