@@ -6,7 +6,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][deps-image]][deps-url]
 
-![bower-browser](resources/screenshot.png)
+[![bower-browser](resources/screenshot.png)](resources/screenshot.png)
 
 ## Features
 * Search from the Bower registry
