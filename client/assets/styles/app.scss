@@ -480,6 +480,10 @@ body {
   transform: translate(0, 100%);
   transition-property: box-shadow, transform;
   transition-duration: 0.3s;
+  ::selection {
+    color: lighten($color, 15%);
+    background-color: rgba(255, 255, 255, 0.18);
+  }
   .open & {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     transform: translate(0, 0);
