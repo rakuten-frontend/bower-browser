@@ -14,7 +14,7 @@
 * Monitor log in realtime
 * Manage local Bower components
 
-![Features](resources/features.png)
+![Features](resources/features.png?raw=true)
 
 ## Installation
 Install via npm.
