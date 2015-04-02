@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.1 (2015-04-02)
+- [fix] Fix scrollbar issue on IE.
+
 ## 0.6.0 (2015-03-23)
 - Renew the design. ([#8](https://github.com/rakuten-frontend/bower-browser/issues/8))
 - Improve performance of search page.
