@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.2 (2015-04-03)
+- [fix] Prevent serving deficient API data. ([#11](https://github.com/rakuten-frontend/bower-browser/issues/11))
+
 ## 0.6.1 (2015-04-02)
 - [fix] Fix scrollbar issue on IE.
 
