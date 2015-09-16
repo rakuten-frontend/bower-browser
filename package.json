@@ -27,12 +27,11 @@
     "test": "gulp test",
     "prepublish": "gulp"
   },
-  "main": "index.js",
+  "main": "lib",
   "bin": {
     "bower-browser": "bin/bower-browser"
   },
   "files": [
-    "index.js",
     "bin",
     "lib"
   ],

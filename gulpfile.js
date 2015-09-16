@@ -25,7 +25,6 @@ var paths = {
   dest: './lib/public',
   test: './test',
   scripts: [
-    './*.js',
     './lib/*.js',
     './test/*.js',
     './client/assets/scripts/**/*.js'
